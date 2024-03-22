@@ -13,13 +13,13 @@ export default function App() {
 		<>
 			<nav className="sticky left-0 top-0 w-full flex justify-around bg-stone-200">
 				<Link to="/">
-					<h1 className="rounded-xl p-2 my-3">Home</h1>
+					<h1 className="rounded-xl p-2 my-3 cursor-default hover:scale-125">Home</h1>
 				</Link>
 				<Link to="/about">
-					<h1 className="rounded-xl p-2 my-3">About</h1>
+					<h1 className="rounded-xl p-2 my-3 cursor-default hover:scale-125">About</h1>
 				</Link>
 				<Link to="/projects">
-					<h1 className="rounded-xl p-2 my-3">Projects</h1>
+					<h1 className="rounded-xl p-2 my-3 cursor-default hover:scale-125">Projects</h1>
 				</Link>
 			</nav>
 			<Routes>

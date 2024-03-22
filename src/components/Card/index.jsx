@@ -10,7 +10,7 @@ export default function Card(props) {
     }
 
     return (
-        <div className="flex flex-col justify-between bg-[#e2ff00]/50 rounded-xl m-3 px-3">
+        <div className="flex flex-col justify-between bg-[#c0f3f9] rounded-xl m-3 px-5">
             <figure className="flex flex-col items-center">
                 <div>
                     <a href={props.appLink} target="_blank" rel="noopener noreferrer">
@@ -22,7 +22,7 @@ export default function Card(props) {
                         <strong>{props.projectName}</strong>
                         <p>{props.startDate} - {props.endDate}</p>
                     </div>
-                    <p>{props.description}</p>
+                    <p className="text-justify">{props.description}</p>
                 </figcaption>
             </figure>
             <div className="flex justify-around items-center my-3">

@@ -5,34 +5,74 @@ import './styles.css'
 export default function AboutPage() {
     const stats = [
         {
+            id: 1,
             stat: "experience",
             endNum: 16,
             tagline: "years of professional experience",
             year: null
         },
         {
+            id: 2,
             stat: "music",
             endNum: 908,
             tagline: "music clients served",
             year: "since 2008"
         },
         {
+            id: 3,
             stat: "real estate",
             endNum: 46,
             tagline: "real estate clients served",
             year: "since 2019"
         },
         {
+            id: 4,
             stat: "software projects",
             endNum: 5,
             tagline: "software projects",
             year: "since 2023"
         },
     ]
+    const experience = [
+        {
+            position: 7,
+            year: 2024,
+            event: "Graduated from General Assembly: Software Engineering Immersive Program"
+        },
+        {
+            position: 6,
+            year: 2023,
+            event: "Enrolled in General Assembly: Software Engineering Immersive Program"
+        },
+        {
+            position: 5,
+            year: 2023,
+            event: "Became a certified Entry-Level Python Programmer"
+        },
+        {
+            position: 4,
+            year: 2022,
+            event: "Enrolled in OpenEDG: Entry-Level Python Programmer self-paced course"
+        },
+        {
+            position: 3,
+            year: 2016,
+            event: "Began self-study of C++ with Stroustroup's \"The C++ Programming Language\""
+        },
+        {
+            position: 2,
+            year: 2009,
+            event: "Enrolled in a Java-based computer science course and passed with honors"
+        },
+        {
+            position: 1,
+            year: 2003,
+            event: "First took interest in coding and programming by creating simple apps on the TI-83 and TI-84 graphing calculators"
+        }
+    ]
 
     document.addEventListener("scroll", () => {
         const allElems = document.getElementsByTagName('*')
-        console.log(allElems)
         for (let i = 0; i < allElems.length; i++) {
             let height = window.innerHeight
             let top = allElems[i].getBoundingClientRect().top
@@ -47,17 +87,18 @@ export default function AboutPage() {
 
     return (
         <>
-            <h1 className="text-center text-2xl my-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
+            <h1 className="text-center text-3xl my-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
             <div className="slide-left flex justify-center items-center m-5">
-                <p className="text-lg">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
-                <img className="ml-3 w-[45vw] rounded-xl"src={self}/>
+                <p className="text-lg max-w-[200px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
+                <img className="ml-3 max-w-[200px] rounded-xl"src={self}/>
             </div>
+            <h3 className="section-title m-5 text-3xl text-center">BACKGROUND</h3>
             <div className="slide-right flex justify-center items-center m-5">
-                <div className="flex flex-col justify-center mr-10  bg-[#c0f3f9] rounded-xl w-[50vw]">
+                <div className="flex flex-col justify-center mr-10 bg-[#c0f3f9] rounded-xl max-w-[200px]]">
                     {
                         stats.map(stat => {
                             return (
-                                <div className="border-black border-2 rounded-xl m-3 p-2 text-center">
+                                <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center">
                                     <CountUp
                                         className="text-3xl mr-3"
                                         start={0}
@@ -71,11 +112,12 @@ export default function AboutPage() {
                         })
                     }
                 </div>
-                <p className="w-[50vw] text-lg">My 16 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
+                <p className="max-w-[200px] text-lg">My 16 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
             </div>
-            <div className="slide-left flex items-center m-5">
-                <p className="w-[50vw] text-lg">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
-                <div className="w-[50vw] flex justify-center">
+            <h3 className="section-title m-5 text-3xl text-center">CONTACT ME</h3>
+            <div className="slide-left flex justify-center items-center m-5">
+                <p className="max-w-[200px] text-lg">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
+                <div className="max-w-[200px] flex justify-center">
                     <a href="mailto:jaeahn2010@gmail.com">
                         <div className="flex flex-col justify-center items-center border-black border-2 rounded-full w-[100px] h-[100px] bg-[#c0f3f9] hover:cursor-pointer hover:animate-bounce">
                             <p className="text-3xl">@</p>
@@ -84,7 +126,7 @@ export default function AboutPage() {
                     </a>
                 </div>
             </div>
-            <h3 className="m-5 text-3xl text-center">Technical Skills</h3>
+            <h3 className="section-title m-5 text-3xl text-center">TECHNICAL SKILLS</h3>
             <div className="all-skills flex justify-center items">
                 <div className="skills-col-1">
                     <img className="skill" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
@@ -111,7 +153,36 @@ export default function AboutPage() {
                     <img className="skill" src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
                 </div>
             </div>
-            
+            <h3 className="section-title m-5 text-3xl text-center">EXPERIENCE</h3>
+            <div>
+                {
+                    experience.map(section => {
+                        if (section.position % 2 !== 0) {
+                            return (
+                                <div key={section.position} className="relative flex justify-center items-center">
+                                    <div className="w-[200px]"></div>
+                                    <div className="timeline-dot absolute z-50 top-0 ml-1 mt-1 w-[15px] h-[15px] border-black border-2 rounded-full bg-[#c0f3f9]"></div>
+                                    <div className="timeline-content border-black border-l-4 w-[200px] pl-3 pr-1">
+                                        <p><strong>{section.year}</strong></p>
+                                        <p>{section.event}</p>
+                                    </div>
+                                </div>
+                            )
+                        } else {
+                            return (
+                                <div key={section.position} className="relative flex justify-center items-center">
+                                    <div className="timeline-content border-black border-r-4 w-[208px] pr-3 pl-1">
+                                        <p className="text-right"><strong>{section.year}</strong></p>
+                                        <p className="text-right">{section.event}</p>
+                                    </div>
+                                    <div className="timeline-dot absolute z-50 top-0 ml-1 mt-1 w-[15px] h-[15px] border-black border-2 rounded-full bg-[#c0f3f9]"></div>
+                                    <div className="w-[200px]"></div>
+                                </div>
+                            )
+                        }
+                    })
+                }
+            </div>
         </>
     )
 }
