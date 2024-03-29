@@ -90,11 +90,11 @@ export default function AboutPage() {
             <h1 className="text-center text-3xl my-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
             <div className="slide-left flex justify-center items-center m-5">
                 <p className="text-lg max-w-[300px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
-                <img className="ml-3 max-w-[300px] rounded-xl"src={self}/>
+                <img className="ml-3 max-w-[300px] shadow-2xl rounded-xl"src={self}/>
             </div>
             <h3 className="section-title m-5 text-3xl text-center">BACKGROUND</h3>
             <div className="slide-right flex justify-center items-center m-5">
-                <div className="flex flex-col justify-center mr-10 bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 rounded-xl max-w-[300px]">
+                <div className="flex flex-col justify-center mr-10 bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 rounded-xl shadow-2xl max-w-[300px]">
                     {
                         stats.map(stat => {
                             return (
@@ -119,7 +119,7 @@ export default function AboutPage() {
                 <p className="max-w-[300px] text-lg">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
                 <div className="w-[300px] flex justify-center">
                     <a href="mailto:jaeahn2010@gmail.com">
-                        <div className="flex flex-col justify-center items-center border-black border-2 rounded-full w-[100px] h-[100px] bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 hover:cursor-pointer hover:animate-bounce">
+                        <div className="flex flex-col justify-center items-center border-black border-2 rounded-full w-[100px] h-[100px] bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 shadow-2xl hover:cursor-pointer hover:animate-bounce">
                             <p className="text-3xl">@</p>
                             <p>Contact Me</p>
                         </div>
@@ -161,8 +161,8 @@ export default function AboutPage() {
                             return (
                                 <div key={section.position} className="relative flex justify-center items-center">
                                     <div className="w-[300px]"></div>
-                                    <div className="timeline-dot absolute z-50 top-0 ml-1 mt-1 w-[15px] h-[15px] border-black border-2 rounded-full bg-[#c0f3f9]"></div>
-                                    <div className="timeline-content border-black border-l-4 w-[300px] pl-3 pr-1">
+                                    <div className="timeline-dot absolute z-50 top-0 ml-1 mt-1 w-[15px] h-[15px] border-black border-2 rounded-full bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500"></div>
+                                    <div className="timeline-content border-black border-l-4 w-[300px] pl-3 pr-1 rounded-r-2xl p-3">
                                         <p><strong>{section.year}</strong></p>
                                         <p>{section.event}</p>
                                     </div>
@@ -172,8 +172,8 @@ export default function AboutPage() {
                             return (
                                 <div key={section.position} className="relative flex flex-row-reverse justify-center items-center">
                                     <div className="w-[300px]"></div>
-                                    <div className="timeline-dot absolute z-50 top-0 ml-1 mt-1 w-[15px] h-[15px] border-black border-2 rounded-full bg-[#c0f3f9]"></div>
-                                    <div className="timeline-content border-black border-r-4 w-[307px] pr-3 pl-1">
+                                    <div className="timeline-dot absolute z-50 top-0 ml-1 mt-1 w-[15px] h-[15px] border-black border-2 rounded-full bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500"></div>
+                                    <div className="timeline-content border-black border-r-4 w-[307px] pr-3 pl-1 rounded-l-2xl p-3">
                                         <p className="text-right"><strong>{section.year}</strong></p>
                                         <p className="text-right">{section.event}</p>
                                     </div>

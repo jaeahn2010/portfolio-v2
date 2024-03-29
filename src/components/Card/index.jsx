@@ -25,10 +25,16 @@ export default function Card(props) {
                     <p className="text-justify">{props.description}</p>
                 </figcaption>
             </figure>
-            <div className="flex justify-between my-3">
+            <div className="mx-auto my-3 p-3 grid grid-rows-2 grid-flow-col gap-5 bg-sky-200 rounded-3xl">
                 {
                     props.badges.map(badge => {
-                        return <img className="w-[30px] h-[30px]" src={badge}/>
+                        let badgeName = badge.slice(12, badge.length - 20)
+                        return (
+                            <div className="flex flex-col items-center justify-center w-[45px]">
+                                <img className="w-[30px] h-[30px]" src={badge}/>
+                                <p className="text-[10px]">{badgeName}</p>
+                            </div>
+                        )
                     })
                 }
             </div>
