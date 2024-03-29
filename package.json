@@ -1,7 +1,7 @@
 {
   "name": "portfolio-v2",
   "version": "0.0.0",
-  "homepage": "https://jaeahn2010.github.io/portfolio-v2",
+  "homepage": "/portfolio-v2",
   "private": true,
   "type": "module",
   "scripts": {
