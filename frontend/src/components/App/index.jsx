@@ -14,7 +14,8 @@ import { getUserByToken } from '../../../utils/backend'
 
 export default function App() {
 	const [loginStatus, setLoginStatus] = useState(false)
-	const [currentUser, setCurrentUser] = useState('')
+	const [currentUsername, setCurrentUsername] = useState('')
+	const [currentUserId, setCurrentUserId] = useState('')
 	const navigate = useNavigate()
 
 	let authLink = 
@@ -30,12 +31,13 @@ export default function App() {
 
 	async function getUserData() {
 		const userData = await getUserByToken()
-		setCurrentUser(`${userData.firstName} ${userData.lastName}`)
+		setCurrentUsername(`${userData.firstName} ${userData.lastName}`)
+		setCurrentUserId(userData.userId)
 	}
 
 	useEffect(() => {
 		if (loginStatus) getUserData()
-	}, [])
+	}, [loginStatus])
 
 	if (loginStatus) {
 		authLink = 
@@ -53,7 +55,7 @@ export default function App() {
 			</button>
 		</div>
 		userGreeting =
-		<h1 className="bg-stone-700 text-white text-right text-sm sticky top-16">Logged in as {currentUser}</h1>
+		<h1 className="bg-stone-300 text-right text-sm sticky top-16">Logged in as {currentUsername}</h1>
 	} else if (localStorage.userToken) {
 		setLoginStatus(true)
 	}
@@ -82,7 +84,12 @@ export default function App() {
 				<Route path="/" element={<HomePage/>}/>
 				<Route path="/about" element={<AboutPage/>}/>
 				<Route path="/projects" element={<ProjectsPage/>}/>
-				<Route path="/reviews" element={<ReviewsPage/>}/>
+				<Route path="/reviews" element={
+					<ReviewsPage
+						loginStatus={loginStatus}
+						currentUsername={currentUsername}
+						currentUserId={currentUserId}
+					/>}/>
 				<Route path="/auth/:formType" element={<AuthFormPage/>}/>
 				<Route path="/*" element={<NotFoundPage/>}/>
 			</Routes>

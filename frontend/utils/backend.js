@@ -38,6 +38,12 @@ export async function logIn(user) {
 //get user by token
 export async function getUserByToken() {
     const authHeader = { headers: { 'Authorization': localStorage.getItem('userToken') } }
-    const { data } = await axios.get(`/api/users`, authHeader)
+    const { data } = await axios.get(`/api/users/token`, authHeader)
+    return data
+}
+
+//get user by id
+export async function getReviewerById(userId) {
+    const { data } = await axios.get(`/api/users/${userId}`)
     return data
 }

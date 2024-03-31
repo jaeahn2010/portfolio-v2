@@ -27,11 +27,19 @@ const authMiddleware = (req, res, next) => {
 };
 
 /* routes */
-// get user's first/last names by token
-router.get('/', authMiddleware, (req, res) => {
+// get user's id, first/last names by token
+router.get('/token', authMiddleware, (req, res) => {
     db.User.findById(req.user.id)
         .then(user => {
-            res.json({ firstName: user.firstName, lastName: user.lastName })
+            res.json({ userId: req.user.id, firstName: user.firstName, lastName: user.lastName })
+        })
+})
+
+// get user(reviewer) by id
+router.get('/:userId', (req, res) => {
+    db.User.findById(req.params.userId)
+        .then(reviewer => {
+            res.json({ firstName: reviewer.firstName, lastName: reviewer.lastName})
         })
 })
 

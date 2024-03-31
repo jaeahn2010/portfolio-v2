@@ -1,16 +1,22 @@
-import { useState } from "react"
-import { updateReview, deleteReview } from "../../../utils/backend"
+import { useEffect, useState } from "react"
+import { updateReview, deleteReview, getReviewerById } from "../../../utils/backend"
 import star from "../../assets/star.svg"
 import starFill from '../../assets/star-fill.svg'
 import starHalf from '../../assets/star-half.svg'
 
-export default function Review({ data, refreshReviews }) {
+export default function Review({ data, refreshReviews, loginStatus, currentUsername, currentUserId }) {
+    const [reviewerName, setReviewerName] = useState('')
     const [showEditForm, setShowEditForm] = useState(false)
     const [editFormData, setEditFormData] = useState({
         userId: data.userId,
         rating: data.rating,
         comment: data.comment,
     })
+
+    useEffect(() => {
+        getReviewerById(data.userId)
+            .then(reviewer => setReviewerName(`${reviewer.firstName} ${reviewer.lastName}`))
+    }, [])
 
     function handleInputChange(event) {
         setEditFormData({
@@ -27,11 +33,15 @@ export default function Review({ data, refreshReviews }) {
     }
 
     function handleDelete() {
-        deleteReview(data._id)
-            .then(() => refreshReviews())
+        if (confirm("Are you sure you would like to delete this offer?")) {
+            deleteReview(data._id)
+                .then(() => refreshReviews())
+        }
     }
 
-    if (showEditForm) {
+    let btns
+    let reviewForm
+    if (showEditForm && loginStatus && data.userId === currentUserId) {
         return (
             <form
                 onSubmit={handleSubmit}
@@ -68,23 +78,28 @@ export default function Review({ data, refreshReviews }) {
             </form>
         )
     } else {
+        if (loginStatus && data.userId === currentUserId) {
+            btns =
+            <div className="flex justify-end">
+                <button
+                    onClick={() => { setShowEditForm(true) }}
+                    className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">
+                    Edit
+                </button>
+                <button
+                    onClick={handleDelete}
+                    className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">
+                    Delete
+                </button>
+            </div>
+        }
         return (
             <div
                 className="bg-gray-100 rounded-lg p-4 my-4 border-gray-700 border-2 w-[80vw] mx-auto">
-                <p className="font-bold">{data.rating}</p>
-                <p className="my-2">{data.comment}</p>
-                <div className="flex justify-end">
-                    <button
-                        onClick={() => { setShowEditForm(true) }}
-                        className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">
-                        Edit
-                    </button>
-                    <button
-                        onClick={handleDelete}
-                        className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">
-                        Delete
-                    </button>
-                </div>
+                <p className="font-bold">Reviewer: {reviewerName}</p>
+                <p className="font-bold">Rating: {data.rating}</p>
+                <p className="my-2">Comment: {data.comment}</p>
+                {btns}
             </div>
         )
     }

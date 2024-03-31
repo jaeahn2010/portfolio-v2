@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { postReview, getReviews } from "../../../utils/backend"
 import Review from "../Review"
 
-export default function reviewsPage({ userId }) {
+export default function reviewsPage({ loginStatus, currentUsername, currentUserId }) {
     const [reviews, setReviews] = useState([])
     const [showCreateForm, setShowCreateForm] = useState(false)
     const [createFormData, setCreateFormData] = useState({
@@ -11,7 +11,7 @@ export default function reviewsPage({ userId }) {
     })
 
     useEffect(() => {
-        getReviews(userId)
+        getReviews()
             .then(reviews => setReviews(reviews))
     }, [])
 
@@ -23,11 +23,15 @@ export default function reviewsPage({ userId }) {
     }
 
     function toggleCreateForm() {
-        setShowCreateForm(!showCreateForm)
+        if (loginStatus) {
+            setShowCreateForm(!showCreateForm)
+        } else {
+            alert("Please sign in to leave a review.")
+        }
     }
 
     function refreshReviews() {
-        getReviews(userId)
+        getReviews()
             .then(newReviewData => setReviews(newReviewData))
     }
 
@@ -38,7 +42,7 @@ export default function reviewsPage({ userId }) {
             comment: ''
         })
         setShowCreateForm(false)
-        postReview({ ...createFormData, userId: userId })
+        postReview({ ...createFormData, userId: currentUserId })
             .then(() => refreshReviews())
     }
 
@@ -49,17 +53,49 @@ export default function reviewsPage({ userId }) {
                 key={review._id}
                 data={review}
                 refreshReviews={refreshReviews}
+                loginStatus={loginStatus}
+                currentUsername={currentUsername}
+                currentUserId={currentUserId}
             />
         })
     }
 
-    let btnText = 'Create'
-    if (showCreateForm) {
-        btnText = 'Close'
+    let btnText = 'Leave a Review'
+    if (showCreateForm) btnText = 'Close'
+
+    let reviewForm
+    if (loginStatus && showCreateForm) {
+        reviewForm =
+        <form
+            onSubmit={handleSubmit}
+            className="bg-gray-100 rounded-lg p-4 my-4 border-gray-700 border-2 w-[80vw] mx-auto text-right">
+            <input
+                name="rating"
+                type="number"
+                min="1"
+                max="5"
+                className="px-2 py-1 w-full bg-gray-100"
+                value={createFormData.rating}
+                onChange={handleInputChange}
+            />
+            <br />
+            <textarea
+                name="comment"
+                className="p-2 my-2 h-[100px] w-full bg-gray-100"
+                placeholder="Your comments"
+                value={createFormData.comment}
+                onChange={handleInputChange}
+            />
+            <button
+                type="submit"
+                className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">
+                Post
+            </button>
+        </form>
     }
 
     return (
-        <div className='comment-section bg-gray-300 rounded-t-lg p-4 pb-10 mt-4 mx-10 space-y-4 relative'>
+        <div className='bg-gray-300 rounded-t-lg p-4 pb-10 mt-4 mx-10 space-y-4 relative'>
             <h1 className='text-xl font-bold'>Reviews</h1>
             <button
                 onClick={toggleCreateForm}
@@ -67,35 +103,7 @@ export default function reviewsPage({ userId }) {
             >
                 {btnText}
             </button>
-
-            {
-                showCreateForm && <form
-                    onSubmit={handleSubmit}
-                    className="bg-gray-100 rounded-lg p-4 my-4 border-gray-700 border-2 w-[80vw] mx-auto text-right">
-                    <input
-                        name="rating"
-                        type="number"
-                        min="1"
-                        max="5"
-                        className="px-2 py-1 w-full bg-gray-100"
-                        value={createFormData.rating}
-                        onChange={handleInputChange}
-                    />
-                    <br />
-                    <textarea
-                        name="comment"
-                        className="p-2 my-2 h-[100px] w-full bg-gray-100"
-                        placeholder="Your comments"
-                        value={createFormData.comment}
-                        onChange={handleInputChange}
-                    />
-                    <button
-                        type="submit"
-                        className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">
-                        Post
-                    </button>
-                </form>
-            }
+            {reviewForm}
             {reviewElements}
         </div>
     )
