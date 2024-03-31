@@ -23,9 +23,10 @@ export default function HomePage() {
                     <a href={resume} download className="font-mono text-yellow-600 cursor-pointer">myResume</a>
                 &#41;;</p>
                 <p className="font-mono">&#125; else &#123;</p>
-                <p className="font-mono pl-6">playSomeGamess&#40;
+                <p className="font-mono pl-6">playSomeGames&#40;
                     <span className="font-mono text-yellow-600 cursor-pointer">here</span>
                 &#41;</p>
+                <p className="font-mono">&#125;</p>
             </div>
         </div>
     )

@@ -4,20 +4,6 @@ import GLVMS from '../../assets/glvms-ss.png'
 import heyThere from '../../assets/heythere-ss.png'
 import RER from '../../assets/rer-ss.png'
 import aimAlign from '../../assets/aimalign-ss.png'
-import cssIcon from '../../assets/css.png'
-import djangoIcon from '../../assets/django.png'
-import ejsIcon from '../../assets/ejs.png'
-import expressIcon from '../../assets/express.png'
-import htmlIcon from '../../assets/html.png'
-import javascriptIcon from '../../assets/javascript.png'
-import materializeIcon from '../../assets/materialize.png'
-import mongodbIcon from '../../assets/mongodb.png'
-import nodejsIcon from '../../assets/nodejs.png'
-import postgresIcon from '../../assets/psql.png'
-import pythonIcon from '../../assets/python.png'
-import reactIcon from '../../assets/react.png'
-import tailwindIcon from '../../assets/tailwind.png'
-
 
 export default function Gallery() {
     const projects = [
@@ -26,7 +12,7 @@ export default function Gallery() {
             projectName: "Personal Portfolio",
             startDate: "December 2023",
             endDate: "December 2023",
-            badges: [htmlIcon, cssIcon, javascriptIcon, reactIcon, tailwindIcon],
+            badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Tailwind"],
             screenshot: portfolio,
             description: "Explore my past, present, and future as a software developer. Find out how my past shaped me to be a unique software engineer, and browse what kind of projects I am working on now.",
             repoLink: "https://github.com/jaeahn2010/portfolio-v2",
@@ -37,7 +23,7 @@ export default function Gallery() {
             projectName: "Greater Las Vegas Music Services",
             startDate: "January 2024",
             endDate: "January 2024",
-            badges: [htmlIcon, cssIcon, javascriptIcon, ejsIcon, nodejsIcon, expressIcon, mongodbIcon],
+            badges: ["HTML", "CSS", "JavaScript", "EJS", "Node.js", "Express.js", "MongoDB"],
             screenshot: GLVMS,
             description: "Need to hire a pianist for your event? Check out the Greater Las Vegas Music Services. On this website, you can customize your music setlist to perfectly match your event - weddings, corporate event, open house, private party, formal recitals, and more! And the exact cost of the music is disclosed to you up front. No hassle, no ambiguity!",
             repoLink: "https://github.com/jaeahn2010/music-services",
@@ -48,7 +34,7 @@ export default function Gallery() {
             projectName: "HeyThere",
             startDate: "February 2024",
             endDate: "February 2024",
-            badges: [pythonIcon, htmlIcon, cssIcon, materializeIcon, postgresIcon, djangoIcon],
+            badges: ["Python", "HTML", "CSS", "Materialize", "PostgreSQL", "Django"],
             screenshot: heyThere,
             description: `Employers and managers, do you need a user-friendly online tool to bring your employees closer? HeyThere makes in-company communications efficient and creates a friendly and collaborative environment among your employees. (Created in collaboration with Milena Pupillo and XingYu 'Jason' Ma)`,
             repoLink: "https://github.com/milenap11/heythere",
@@ -59,7 +45,7 @@ export default function Gallery() {
             projectName: "Real Estate Redirect",
             startDate: "March 2024",
             endDate: "In Progress",
-            badges: [htmlIcon, cssIcon, javascriptIcon, nodejsIcon, expressIcon, mongodbIcon, reactIcon, tailwindIcon],
+            badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Tailwind"],
             screenshot: RER,
             description: "Are you a DIY kind of person when it comes to real estate? Whether you are a home seller or a buyer, you can use Real Estate Redirect to communicate and transact directly with each other, without the need of hiring any real estate agents.",
             repoLink: "https://github.com/jaeahn2010/real-estate-redirect",
@@ -70,7 +56,7 @@ export default function Gallery() {
             projectName: "IYDV Auto-Scheduler",
             startDate: "March 2024",
             endDate: "In Progress",
-            badges: [htmlIcon, cssIcon, javascriptIcon, nodejsIcon, expressIcon, mongodbIcon, reactIcon, tailwindIcon],
+            badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Tailwind"],
             screenshot: "#",
             description: "This is a private application for use by the admin of IYDV only. It is a tool that automates daily schedule creation for students, faculty and pianists based on individual requests and availability.",
             repoLink: "https://github.com/jaeahn2010/iydv-react",
@@ -81,7 +67,7 @@ export default function Gallery() {
             projectName: "AimAlign",
             startDate: "March 2024",
             endDate: "In Progress",
-            badges: [pythonIcon, htmlIcon, cssIcon, materializeIcon, postgresIcon, djangoIcon],
+            badges: ["Python", "HTML", "CSS", "Materialize", "PostgreSQL", "Django"],
             screenshot: aimAlign,
             description: "Having trouble organizing and achieving your goals? This user-friendly website is just right for you. Make an account, and simply set a goal with some checkpoints, and AimAlign will automatically remind you and keep track of your progress.",
             repoLink: "https://github.com/jaeahn2010/aim-align",
