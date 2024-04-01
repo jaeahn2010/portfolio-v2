@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
 import { postReview, getReviews } from "../../../utils/backend"
 import Review from "../Review"
+import star from "../../assets/star.svg"
+import starFill from '../../assets/star-fill.svg'
 
 export default function reviewsPage({ loginStatus, currentUsername, currentUserId }) {
     const [reviews, setReviews] = useState([])
+    const [starClicked, setStarClicked] = useState(false)
     const [showCreateForm, setShowCreateForm] = useState(false)
     const [createFormData, setCreateFormData] = useState({
         rating: 0,
@@ -46,6 +49,42 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
             .then(() => refreshReviews())
     }
 
+    function handleMouseEnter(event) {
+        if (!starClicked) {
+            let starArr = document.getElementsByClassName('star')
+            for (let starIcon of starArr) {
+                if (Number(starIcon.id) <= Number(event.target.id)) {
+                    starIcon.src = starFill
+                }
+            }
+        }
+    }
+
+    function handleMouseLeave() {
+        if (!starClicked) {
+            let starArr = document.getElementsByClassName('star')
+            for (let starIcon of starArr) {
+                starIcon.src = star
+            }
+        }
+    }
+
+    function handleClick(event) {
+        let starArr = document.getElementsByClassName('star')
+        setStarClicked(true)
+        for (let starIcon of starArr) {
+            if (Number(starIcon.id) <= Number(event.target.id)) {
+                starIcon.src = starFill
+            } else {
+                starIcon.src = star
+            }
+        }
+        setCreateFormData({
+            ...createFormData,
+            rating: Number(event.target.id),
+        })
+    }
+
     let reviewElements = [<p key='0' className='text-center'>No reviews yet. Be the first to review!</p>]
     if (reviews.length > 0) {
         reviewElements = reviews.map(review => {
@@ -63,8 +102,17 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     let btnText = 'Leave a Review'
     if (showCreateForm) btnText = 'Close'
 
+    let starRating
     let reviewForm
     if (loginStatus && showCreateForm) {
+        starRating =
+        <div className="flex">
+            <img className="star w-[50px]" id="1" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[50px]" id="2" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[50px]" id="3" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[50px]" id="4" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[50px]" id="5" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+        </div>
         reviewForm =
         <form
             onSubmit={handleSubmit}
@@ -75,6 +123,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
                 min="1"
                 max="5"
                 className="px-2 py-1 w-full bg-gray-100"
+                hidden
                 value={createFormData.rating}
                 onChange={handleInputChange}
             />
@@ -103,6 +152,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
             >
                 {btnText}
             </button>
+            {starRating}
             {reviewForm}
             {reviewElements}
         </div>

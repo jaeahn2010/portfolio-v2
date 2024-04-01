@@ -40,7 +40,13 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
     }
 
     let btns
-    let reviewForm
+    let starRating = []
+    for (let i = 0; i < data.rating; i++) {
+        starRating.push(<img src={starFill}/>)
+    }
+    for (let j = 0; j < 5 - data.rating; j++) {
+        starRating.push(<img src={star}/>)
+    }
     if (showEditForm && loginStatus && data.userId === currentUserId) {
         return (
             <form
@@ -97,7 +103,10 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
             <div
                 className="bg-gray-100 rounded-lg p-4 my-4 border-gray-700 border-2 w-[80vw] mx-auto">
                 <p className="font-bold">Reviewer: {reviewerName}</p>
-                <p className="font-bold">Rating: {data.rating}</p>
+                <div className="flex">
+                    <p className="font-bold">Rating:</p>
+                    <div className="flex ml-5">{starRating}</div>
+                </div>
                 <p className="my-2">Comment: {data.comment}</p>
                 {btns}
             </div>
