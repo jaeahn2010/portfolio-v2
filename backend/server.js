@@ -20,10 +20,14 @@ app.use(cors())
 // body parser - used for POST/PUT/PATCH routes:
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
+app.use(express.static(path.join(path.dirname(__dirname), 'frontend', 'dist')))
 
 /* routes */
 app.use('/api/reviews', reviewsCtrl)
 app.use('/api/users', usersCtrl)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(path.dirname(__dirname), 'frontend', 'dist', 'index.html'));
+});
 
 /* listen on port */
 app.listen(process.env.PORT, function () {
