@@ -42,10 +42,10 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
     let btns
     let starRating = []
     for (let i = 0; i < data.rating; i++) {
-        starRating.push(<img src={starFill}/>)
+        starRating.push(<img key={i + 1} src={starFill}/>)
     }
     for (let j = 0; j < 5 - data.rating; j++) {
-        starRating.push(<img src={star}/>)
+        starRating.push(<img key={5 - j} src={star}/>)
     }
     if (showEditForm && loginStatus && data.userId === currentUserId) {
         return (

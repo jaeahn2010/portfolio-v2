@@ -18,6 +18,12 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
             .then(reviews => setReviews(reviews))
     }, [])
 
+    let ratingsTotal = 0
+    for (let review of reviews) {
+        ratingsTotal += Number(review.rating)
+    }
+    let ratingsAverage = ratingsTotal / reviews.length
+
     function handleInputChange(event) {
         setCreateFormData({
             ...createFormData,
@@ -146,6 +152,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     return (
         <div className='bg-gray-300 rounded-t-lg p-4 pb-10 mt-4 mx-10 space-y-4 relative'>
             <h1 className='text-xl font-bold'>Reviews</h1>
+            <p>Overall rating: {ratingsAverage.toFixed(2)} / 5</p>
             <button
                 onClick={toggleCreateForm}
                 className="top-0 right-5 absolute text-white hover:bg-green-800 font-bold py-2 px-4 bg-green-900 rounded cursor-pointer mr-2"
