@@ -13,6 +13,7 @@ import postgresIcon from '../../assets/psql.png'
 import pythonIcon from '../../assets/python.png'
 import reactIcon from '../../assets/react.png'
 import tailwindIcon from '../../assets/tailwind.png'
+import bootstrapIcon from '../../assets/bootstrap.png'
 
 export default function Card(props) {
     const badgeArr = [
@@ -29,6 +30,7 @@ export default function Card(props) {
         {badgeName: "Python", icon: pythonIcon},
         {badgeName: "React", icon: reactIcon},
         {badgeName: "Tailwind", icon: tailwindIcon},
+        {badgeName: "Bootstrap", icon: bootstrapIcon},
     ]
     let webImage = ''
     if (props.screenshot === "#") {

@@ -73,6 +73,17 @@ export default function Gallery() {
             repoLink: "https://github.com/jaeahn2010/aim-align",
             appLink: "#",
         },
+        {
+            projectId: "JYAB0007",
+            projectName: "NannyNetLV",
+            startDate: "April 2024",
+            endDate: "In Progress",
+            badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Bootstrap"],
+            screenshot: "#",
+            description: "NannyNetLV brings parents and babysitters of the Las Vegas valley together by making the search simple. Find your perfect babysitter based on language spoken, location, childcare philosophy, and your budget!",
+            repoLink: "https://github.com/jaeahn2010/nannynetlv",
+            appLink: "#",
+        },
     ]
     return (
         <div className="grid sm:grid-cols-2 lg:grid-cols-3">
