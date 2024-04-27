@@ -14,7 +14,7 @@ export default function AboutPage() {
         {
             id: 2,
             stat: "music",
-            endNum: 909,
+            endNum: 915,
             tagline: "music clients served",
             year: "since 2008"
         },
@@ -28,7 +28,7 @@ export default function AboutPage() {
         {
             id: 4,
             stat: "software projects",
-            endNum: 6,
+            endNum: 7,
             tagline: "software projects",
             year: "since 2023"
         },
@@ -86,7 +86,7 @@ export default function AboutPage() {
     })
 
     return (
-        <>
+        <main className="w-screen">
             <h1 className="text-center text-3xl my-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
             <div className="slide-left flex justify-center items-center m-5">
                 <p className="text-lg max-w-[300px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
@@ -127,32 +127,37 @@ export default function AboutPage() {
                 </div>
             </div>
             <h3 className="section-title m-5 text-3xl text-center">TECHNICAL SKILLS</h3>
-            <div className="all-skills flex justify-center items">
-                <div className="skills-col-1">
-                    <img className="skill" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-                    <img className="skill" src='https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white'/>
-                    <img className="skill" src='https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white'/>
+            <div className="flex justify-center items-center">
+                <p className="text-[200px] mr-20">&#91;</p>
+                <div className="all-skills flex justify-center items">
+                    <div className="skills-col-1">
+                        <img className="skill" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+                        <img className="skill" src='https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white'/>
+                        <img className="skill" src='https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white'/>
+                    </div>
+                    <div className="skills-col-2">
+                        <img className="skill" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
+                        <img className="skill" src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+                        <img className="skill" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
+                    </div>
+                    <div className="skills-col-3">
+                        <img className="skill" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white"/>
+                        <img className="skill" src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
+                    </div>
                 </div>
-                <div className="skills-col-2">
-                    <img className="skill" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
-                    <img className="skill" src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-                    <img className="skill" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
-                </div>
-                <div className="skills-col-3">
-                    <img className="skill" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white"/>
-                    <img className="skill" src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
-                </div>
+                <p className="text-[200px] ml-20">&#93;</p>
             </div>
+                
             <h3 className="section-title m-5 text-3xl text-center">EXPERIENCE</h3>
             <div>
                 {
@@ -183,6 +188,6 @@ export default function AboutPage() {
                     })
                 }
             </div>
-        </>
+        </main>
     )
 }

@@ -44,7 +44,7 @@ export default function Card(props) {
             <figure className="flex flex-col items-center">
                 <div>
                     <a href={props.appLink} target="_blank" rel="noopener noreferrer">
-                    <img className="w-[300px] h-[200px] rounded-xl my-3 hover:scale-105" src={webImage}/>
+                    <img className="w-full h-[90%] rounded-xl my-3 hover:scale-105" src={webImage}/>
                     </a>
                 </div>
                 <figcaption>
