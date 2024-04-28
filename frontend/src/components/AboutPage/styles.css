@@ -44,12 +44,12 @@
 
 @keyframes spread-x {
     from {margin: 0;}
-    to {margin: 0 30px;}
+    to {margin: 0 10px;}
 }
 
 @keyframes spread-y {
     from {margin: 0;}
-    to {margin: 30px 0;}
+    to {margin: 10px 0;}
 }
 
 @keyframes slide-left {

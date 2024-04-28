@@ -54,7 +54,7 @@ export default function App() {
 				Log Out
 			</button>
 		userGreeting =
-			<h1 className="bg-stone-300 text-right text-sm sticky top-16">Logged in as {currentUsername}</h1>
+			<h1 className='rounded-xl p-2 my-3 cursor-default hover:scale-125'>Logged in as: <span className="text-green-700">{currentUsername}</span></h1>
 	} else if (localStorage.userToken) {
 		setLoginStatus(true)
 	}
@@ -65,7 +65,7 @@ export default function App() {
 				<nav className={`${hamburgerMenu ? 'navbar-narrow w-[150px] bg-stone-200' : 'navbar-wide w-full'}`}>
 					<div className='menu-toggle' >
 						<div className={`${hamburgerMenu ? 'hamburger-icon-active' : 'hamburger-icon-inactive'} w-[16px] md:w-[30px]`} onClick={() => setHamburgerMenu(!hamburgerMenu)}></div>
-						<div className={`${hamburgerMenu ? 'menu-items-visible text-center' : 'menu-items-invisible'} text-[12px]`}>
+						<div className={`${hamburgerMenu ? 'menu-items-visible text-center' : 'menu-items-invisible'} text-[12px] px-1`}>
 							<Link to="/">
 								<h1 className="rounded-xl p-2 my-3 cursor-default hover:scale-125">Home</h1>
 							</Link>
@@ -78,11 +78,11 @@ export default function App() {
 							<Link to="/reviews">
 								<h1 className="rounded-xl p-2 my-3 cursor-default hover:scale-125">Reviews</h1>
 							</Link>
+							{userGreeting}
 							{authLink}
 						</div>
 					</div>
 				</nav>
-				{userGreeting}
 				<Routes id="pages">
 					<Route path="/" element={<HomePage/>}/>
 					<Route path="/about" element={<AboutPage/>}/>

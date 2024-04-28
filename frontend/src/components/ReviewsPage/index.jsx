@@ -112,17 +112,17 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     let reviewForm
     if (loginStatus && showCreateForm) {
         starRating =
-        <div className="flex">
-            <img className="star w-[50px]" id="1" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[50px]" id="2" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[50px]" id="3" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[50px]" id="4" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[50px]" id="5" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+        <div className="flex justify-center">
+            <img className="star w-[30px]" id="1" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[30px]" id="2" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[30px]" id="3" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[30px]" id="4" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            <img className="star w-[30px]" id="5" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
         </div>
         reviewForm =
         <form
             onSubmit={handleSubmit}
-            className="bg-gray-100 rounded-lg p-4 my-4 border-gray-700 border-2 w-[80vw] mx-auto text-right">
+            className="bg-gray-100 rounded-lg p-4 my-2 border-gray-700 border-2 w-[80vw] mx-auto text-right">
             <input
                 name="rating"
                 type="number"
@@ -150,9 +150,9 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     }
 
     return (
-        <div className='bg-gray-300 rounded-t-lg p-4 pb-10 mt-4 mx-10 space-y-4 relative'>
+        <div className='bg-gray-300 rounded-t-lg p-4 pb-10 mt-4 space-y-4 relative mx-auto'>
             <h1 className='text-xl font-bold'>Reviews</h1>
-            <p>Overall rating: {ratingsAverage.toFixed(2)} / 5</p>
+            <p className="text-center">Overall rating: {ratingsAverage.toFixed(2)} / 5</p>
             <button
                 onClick={toggleCreateForm}
                 className="top-0 right-5 absolute text-white hover:bg-green-800 font-bold py-2 px-4 bg-green-900 rounded cursor-pointer mr-2"
