@@ -1,8 +1,10 @@
 import self from '../../assets/self.png'
 import CountUp from "react-countup"
+import { useState } from 'react'
 import './styles.css'
 
 export default function AboutPage() {
+    const [displayEvent, setDisplayEvent] = useState([0, false])
     const stats = [
         {
             id: 1,
@@ -36,37 +38,37 @@ export default function AboutPage() {
     const experience = [
         {
             position: 7,
-            year: 2024,
+            year: 'Mar 2024',
             event: "Graduated from General Assembly: Software Engineering Immersive Program"
         },
         {
             position: 6,
-            year: 2023,
+            year: 'Dec 2023',
             event: "Enrolled in General Assembly: Software Engineering Immersive Program"
         },
         {
             position: 5,
-            year: 2023,
+            year: 'Apr 2023',
             event: "Became a certified Entry-Level Python Programmer"
         },
         {
             position: 4,
-            year: 2022,
+            year: 'Nov 2022',
             event: "Enrolled in OpenEDG: Entry-Level Python Programmer self-paced course"
         },
         {
             position: 3,
-            year: 2016,
+            year: 'Jun 2016',
             event: "Began self-study of C++ with Stroustroup's \"The C++ Programming Language\""
         },
         {
             position: 2,
-            year: 2009,
+            year: 'Aug 2009',
             event: "Enrolled in a Java-based computer science course and passed with honors"
         },
         {
             position: 1,
-            year: 2003,
+            year: 'Aug 2003',
             event: "First took interest in coding and programming by creating simple apps on the TI-83 and TI-84 graphing calculators"
         }
     ]
@@ -84,6 +86,11 @@ export default function AboutPage() {
               }
         }
     })
+
+    function handleClick(evt) {
+        evt.preventDefault()
+        console.log(evt.target.id)
+    }
 
     return (
         <main className="w-screen">
@@ -163,28 +170,36 @@ export default function AboutPage() {
                 experience.map(section => {
                     return (
                         <div key={section.position} className="flex justify-center">
-                            <div className={`${(section.position % 2) ? '' : 'border-black border-y-2 border-l-2 bg-gradient-to-b from-sky-100 via-sky-300'} w-[120px] h-[160px] rounded-l-xl`}>
+                            <div id={`timeline-${section.position}`} className={`${(section.position % 2) ? '' : 'border-black border-y-2 border-l-2 bg-gradient-to-b from-sky-100 via-sky-300'} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-l-xl`}>
                                 {
                                     !(section.position % 2)
                                     ?
                                         <>
-                                            <p className="text-center pt-2"><strong>{section.year}</strong></p>
+                                            <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
+                                                evt.preventDefault()
+                                                setDisplayEvent([section.position, !displayEvent[1]])
+                                                setElemId(Number(evt.target.id.slice(5)))
+                                            }}>{section.year}</p>
                                             <div className="flex flex-col h-3/4 justify-center">
-                                                <p className="text-[12px] text-center">{section.event}</p>
+                                                <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
                                             </div> 
                                         </>
                                     : ''
                                 }
                             </div>
-                            <div className={`border-black border-x-2 w-[10px] h-[200px]`}></div>
-                            <div className={`${(section.position % 2) ? 'border-black border-y-2 border-r-2 bg-gradient-to-b from-sky-100 via-sky-300' : ''} w-[120px] h-[160px] rounded-r-xl`}>
+                            <div className={`border-black border-x-2 w-[10px] ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[200px]' : 'h-[40px]'}`}></div>
+                            <div className={`${(section.position % 2) ? 'border-black border-y-2 border-r-2 bg-gradient-to-b from-sky-100 via-sky-300' : ''} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-r-xl`}>
                                 {
                                     (section.position % 2)
                                     ?
                                         <>
-                                            <p className="text-center pt-2"><strong>{section.year}</strong></p>
+                                            <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
+                                                evt.preventDefault()
+                                                setDisplayEvent([section.position, !displayEvent[1]])
+                                                setElemId(Number(evt.target.id.slice(5)))
+                                            }}>{section.year}</p>
                                             <div className="flex flex-col h-3/4 justify-center">
-                                                <p className="text-[12px] text-center">{section.event}</p>
+                                                <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
                                             </div> 
                                         </>
                                     : ''
