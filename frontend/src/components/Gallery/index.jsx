@@ -86,7 +86,7 @@ export default function Gallery() {
         },
     ]
     return (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3">
+        <div className="w-5/6 mx-auto grid sm:grid-cols-2 lg:grid-cols-3">
             {
                 projects.map(project => {
                     return (

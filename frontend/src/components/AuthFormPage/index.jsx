@@ -66,7 +66,7 @@ export default function AuthFormPage() {
     }
 
     return (
-        <div className="flex items-center justify-center h-[90vh]">
+        <div className="flex items-center justify-center h-[90vh] mx-auto md:w-[600px]">
             <div className="bg-gray-800 rounded-lg shadow-xl p-8 w-full max-w-md">
                 <h2 className="text-3xl text-center font-bold text-gray-100 mb-8">{actionText}</h2>
                 <form className="space-y-6" onSubmit={handleSubmit}>

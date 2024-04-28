@@ -53,13 +53,13 @@
 }
 
 @keyframes slide-left {
-    from {transform: translateX(-700px)}
-    to {transform: translateX(0)}
+    from {transform: translateX(-700px); opacity: 0;}
+    to {transform: translateX(0); opacity: 100%;}
 }
 
 @keyframes slide-right {
-    from {transform: translateX(700px)}
-    to {transform: translateX(0)}
+    from {transform: translateX(700px); opacity: 0;}
+    to {transform: translateX(0); opacity: 100%;}
 }
 
 @keyframes attention {

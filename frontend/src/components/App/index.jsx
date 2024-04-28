@@ -62,10 +62,10 @@ export default function App() {
 	return (
 		<>
 			<main className={`${hamburgerMenu ? 'nav-and-page-flex' : 'nav-and-page-block'}`}>
-				<nav className={`${hamburgerMenu ? 'navbar-narrow w-1/6 bg-stone-200' : 'navbar-wide w-full'}`}>
-					<div className='menu-toggle' onClick={() => setHamburgerMenu(!hamburgerMenu)}>
-						<div className={`${hamburgerMenu ? 'hamburger-icon-active' : 'hamburger-icon-inactive'}`}></div>
-						<div className={`${hamburgerMenu ? 'menu-items-visible text-right mr-5' : 'menu-items-invisible'}`}>
+				<nav className={`${hamburgerMenu ? 'navbar-narrow w-[150px] bg-stone-200' : 'navbar-wide w-full'}`}>
+					<div className='menu-toggle' >
+						<div className={`${hamburgerMenu ? 'hamburger-icon-active' : 'hamburger-icon-inactive'} w-[16px] md:w-[30px]`} onClick={() => setHamburgerMenu(!hamburgerMenu)}></div>
+						<div className={`${hamburgerMenu ? 'menu-items-visible text-center' : 'menu-items-invisible'} text-[12px]`}>
 							<Link to="/">
 								<h1 className="rounded-xl p-2 my-3 cursor-default hover:scale-125">Home</h1>
 							</Link>

@@ -71,6 +71,7 @@
 
 .menu-items-invisible {
     display: none;
+    animation: slide-in 1s ease reverse forwards;
 }
 
 .nav-and-page-flex {
