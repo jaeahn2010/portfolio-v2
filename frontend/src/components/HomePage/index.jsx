@@ -23,8 +23,8 @@ export default function HomePage() {
                     <a href={resume} download className="font-mono text-yellow-600 cursor-pointer hover:underline">myResume</a>
                 &#41;;</p>
                 <p className="font-mono">&#125; else &#123;</p>
-                <p className="font-mono pl-6">playSomeGames&#40;
-                    <span className="font-mono text-yellow-600 cursor-pointer hover:underline">here</span>
+                <p className="font-mono pl-6">contactMe&#40;
+                    <a href="mailto:jaeahn2010@gmail.com" className="font-mono text-yellow-600 cursor-pointer hover:underline">here</a>
                 &#41;;</p>
                 <p className="font-mono">&#125;</p>
             </div>

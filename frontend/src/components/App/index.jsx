@@ -65,7 +65,7 @@ export default function App() {
 				<nav className={`${hamburgerMenu ? 'navbar-narrow w-[150px] bg-stone-200' : 'navbar-wide w-full'}`}>
 					<div className='menu-toggle' >
 						<div className={`${hamburgerMenu ? 'hamburger-icon-active' : 'hamburger-icon-inactive'} w-[16px] md:w-[30px]`} onClick={() => setHamburgerMenu(!hamburgerMenu)}></div>
-						<div className={`${hamburgerMenu ? 'menu-items-visible text-center' : 'menu-items-invisible'} text-[12px] px-1`}>
+						<div className={`${hamburgerMenu ? 'menu-items-visible text-center' : 'menu-items-invisible'} text-[12px] md:text-[18px] px-1`}>
 							<Link to="/">
 								<h1 className="rounded-xl p-2 my-3 cursor-default hover:scale-125">Home</h1>
 							</Link>
