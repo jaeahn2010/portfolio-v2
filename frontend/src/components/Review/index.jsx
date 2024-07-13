@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { updateReview, deleteReview, getReviewerById } from "../../../utils/backend"
 import star from "../../assets/star.svg"
 import starFill from '../../assets/star-fill.svg'
-import starHalf from '../../assets/star-half.svg'
 
 export default function Review({ data, refreshReviews, loginStatus, currentUsername, currentUserId }) {
     const [reviewerName, setReviewerName] = useState('')
@@ -70,16 +69,8 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
                     onChange={handleInputChange}
                 />
                 <div>
-                    <button
-                        onClick={() => { setShowEditForm(false) }}
-                        className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">
-                        Close
-                    </button>
-                    <button
-                        type="submit"
-                        className="text-white hover:bg-green-800 font-bold py-2 px-4 bg-green-900 rounded cursor-pointer mr-2">
-                        Post
-                    </button>
+                    <button onClick={() => setShowEditForm(false)} className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">Close</button>
+                    <button type="submit" className="text-white hover:bg-green-800 font-bold py-2 px-4 bg-green-900 rounded cursor-pointer mr-2">Post</button>
                 </div>
             </form>
         )
@@ -87,21 +78,12 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
         if (loginStatus && data.userId === currentUserId) {
             btns =
             <div className="flex justify-end">
-                <button
-                    onClick={() => { setShowEditForm(true) }}
-                    className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">
-                    Edit
-                </button>
-                <button
-                    onClick={handleDelete}
-                    className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">
-                    Delete
-                </button>
+                <button onClick={() => setShowEditForm(true)} className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">Edit</button>
+                <button onClick={handleDelete} className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">Delete</button>
             </div>
         }
         return (
-            <div
-                className="bg-gray-100 rounded-lg p-4 my-4 border-gray-700 border-2 w-[80vw] mx-auto">
+            <div className="bg-gray-100 rounded-lg p-4 my-4 border-gray-700 border-2 w-[80vw] mx-auto">
                 <p className="font-bold">Reviewer: {reviewerName}</p>
                 <div className="flex">
                     <p className="font-bold">Rating:</p>

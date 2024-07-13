@@ -16,7 +16,7 @@ export default function AboutPage() {
         {
             id: 2,
             stat: "music",
-            endNum: 915,
+            endNum: 927,
             tagline: "music clients served",
             year: "since 2008"
         },
@@ -78,12 +78,8 @@ export default function AboutPage() {
         for (let i = 0; i < allElems.length; i++) {
             let height = window.innerHeight
             let top = allElems[i].getBoundingClientRect().top
-            let visibility = 100;
-            if (top < height - visibility) {
-                allElems[i].classList.add("active");
-              } else {
-                allElems[i].classList.remove("active");
-              }
+            let visibility = 100
+            top < height - visibility ? allElems[i].classList.add('active') : allElems[i].classList.remove('active')
         }
     })
 
@@ -97,22 +93,18 @@ export default function AboutPage() {
             <h3 className="section-title m-5 text-3xl text-center">BACKGROUND</h3>
             <div className="slide-right flex justify-center items-center m-5">
                 <div className="flex flex-col justify-center mr-10 bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 rounded-xl shadow-2xl max-w-[300px]">
-                    {
-                        stats.map(stat => {
-                            return (
-                                <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center">
-                                    <CountUp
-                                        className="text-3xl"
-                                        start={0}
-                                        end={stat.endNum}
-                                        duration={5}
-                                    />
-                                    <p className="text-[12px]">{stat.tagline}</p>
-                                    <p className="text-[12px]">{stat.year}</p>
-                                </div>
-                            )
-                        })
-                    }
+                    {stats.map(stat => 
+                        <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center">
+                            <CountUp
+                                className="text-3xl"
+                                start={0}
+                                end={stat.endNum}
+                                duration={5}
+                            />
+                            <p className="text-[12px]">{stat.tagline}</p>
+                            <p className="text-[12px]">{stat.year}</p>
+                        </div>
+                    )}
                 </div>
                 <p className="max-w-[300px] md:text-lg">My 16 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
             </div>
@@ -162,49 +154,39 @@ export default function AboutPage() {
                 
             <h3 className="section-title m-5 text-3xl text-center">EXPERIENCE</h3>
             <section className='my-5'>
-                {
-                    experience.map(section => {
-                        return (
-                            <div key={section.position} className="flex justify-center">
-                                <div id={`timeline-${section.position}`} className={`${(section.position % 2) ? '' : 'border-black border-y-2 border-l-2 bg-gradient-to-b from-sky-100 via-sky-300'} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-l-xl`}>
-                                    {
-                                        !(section.position % 2)
-                                        ?
-                                            <>
-                                                <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
-                                                    evt.preventDefault()
-                                                    setDisplayEvent([section.position, !displayEvent[1]])
-                                                    setElemId(Number(evt.target.id.slice(5)))
-                                                }}>{section.year}</p>
-                                                <div className="flex flex-col h-3/4 justify-center">
-                                                    <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
-                                                </div> 
-                                            </>
-                                        : ''
-                                    }
-                                </div>
-                                <div className={`border-black border-x-2 w-[10px] ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[200px]' : 'h-[40px]'}`}></div>
-                                <div className={`${(section.position % 2) ? 'border-black border-y-2 border-r-2 bg-gradient-to-b from-sky-100 via-sky-300' : ''} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-r-xl`}>
-                                    {
-                                        (section.position % 2)
-                                        ?
-                                            <>
-                                                <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
-                                                    evt.preventDefault()
-                                                    setDisplayEvent([section.position, !displayEvent[1]])
-                                                    setElemId(Number(evt.target.id.slice(5)))
-                                                }}>{section.year}</p>
-                                                <div className="flex flex-col h-3/4 justify-center">
-                                                    <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
-                                                </div> 
-                                            </>
-                                        : ''
-                                    }
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+                {experience.map(section => 
+                    <div key={section.position} className="flex justify-center">
+                        <div id={`timeline-${section.position}`} className={`${(section.position % 2) ? '' : 'border-black border-y-2 border-l-2 bg-gradient-to-b from-sky-100 via-sky-300'} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-l-xl`}>
+                            {!(section.position % 2) ?
+                                <>
+                                    <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
+                                        evt.preventDefault()
+                                        setDisplayEvent([section.position, !displayEvent[1]])
+                                        setElemId(Number(evt.target.id.slice(5)))
+                                    }}>{section.year}</p>
+                                    <div className="flex flex-col h-3/4 justify-center">
+                                        <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
+                                    </div> 
+                                </>
+                            : ''}
+                        </div>
+                        <div className={`border-black border-x-2 w-[10px] ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[200px]' : 'h-[40px]'}`}></div>
+                        <div className={`${(section.position % 2) ? 'border-black border-y-2 border-r-2 bg-gradient-to-b from-sky-100 via-sky-300' : ''} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-r-xl`}>
+                            {(section.position % 2) ?
+                                <>
+                                    <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
+                                        evt.preventDefault()
+                                        setDisplayEvent([section.position, !displayEvent[1]])
+                                        setElemId(Number(evt.target.id.slice(5)))
+                                    }}>{section.year}</p>
+                                    <div className="flex flex-col h-3/4 justify-center">
+                                        <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
+                                    </div> 
+                                </>
+                            : ''}
+                        </div>
+                    </div>
+                )}
             </section>
         </main>
     )

@@ -33,51 +33,36 @@ export default function Card(props) {
         {badgeName: "Bootstrap", icon: bootstrapIcon},
     ]
     let webImage = ''
-    if (props.screenshot === "#") {
-        webImage = placeholder
-    } else {
-        webImage = props.screenshot
-    }
+    webImage = props.screenshot === '#' ? placeholder : props.screenshot
 
     return (
         <div className="flex flex-col bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 rounded-xl m-3 px-5 py-6">
             <figure className="flex flex-col items-center basis-3/4">
                 <div className="mb-5">
                     <a href={props.appLink} target="_blank" rel="noopener noreferrer">
-                    <img className="w-full rounded-xl my-3 hover:scale-105" src={webImage}/>
+                        <img className="w-full rounded-xl my-3 hover:scale-105" src={webImage}/>
                     </a>
                 </div>
                 <figcaption className="">
                     <div className="text-center my-3">
                         <strong>{props.projectName}</strong>
-                        <p>{props.startDate} - {props.endDate}</p>
+                        <p>{props.startDate}</p>
                     </div>
                     <p className="text-justify">{props.description}</p>
                 </figcaption>
             </figure>
             <div className="p-3 grid grid-rows-2 grid-flow-col gap-3 bg-sky-200 rounded-3xl max-w-[300px] mx-auto mt-5">
-                {
-                    props.badges.map(badge => {
-                        let badgeIcon
-                        for (let badgeObj of badgeArr) {
-                            if (badgeObj.badgeName === badge) {
-                                badgeIcon = badgeObj.icon
-                                break
-                            }
-                        }
-                        return (
-                            <div key={badge} className="flex flex-col items-center justify-center w-[40px] mx-auto">
-                                <img className="w-[30px] h-[30px]" src={badgeIcon}/>
-                                <p className="text-[10px]">{badge}</p>
-                            </div>
-                        )
-                    })
-                }
+                {props.badges.map(badge => 
+                    <div key={badge} className="flex flex-col items-center justify-center w-[40px] mx-auto">
+                        <img className="w-[30px] h-[30px]" src={badgeArr.find(eachBadge => eachBadge.badgeName === badge).icon}/>
+                        <p className="text-[10px]">{badge}</p>
+                    </div>
+                )}
             </div>
             <div className="flex justify-around items-center mt-6 mb-3">
                 <a href={props.repoLink} target="_blank" rel="noopener noreferrer">
                     <img className="w-[50px]" src={gitHub}/>
-            </a>
+                </a>
             </div>
         </div>
     )

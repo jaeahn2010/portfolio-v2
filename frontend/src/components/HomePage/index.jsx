@@ -1,9 +1,15 @@
 import homepageImage from '../../assets/homepage-image.png'
 import resume from '../../assets/resume.pdf'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './styles.css'
+import javascriptIcon from '../../assets/javascript.png'
+import pythonIcon from '../../assets/python.png'
 
 export default function HomePage() {
+    const [languageSwitch, setLanguageSwitch] = useState('javascript')
+    let languageSwitchStyle = 'h-[30px] hover:animate-spin hover:cursor-pointer'
+
     return (
         <section className="flex flex-col justify-center items-center mx-auto">
             <div className="welcome-image my-10 flex justify-center">
@@ -12,21 +18,25 @@ export default function HomePage() {
             <div>
                 <p className="welcome-message font-mono text-[12px] md:text-[18px] lg:text-[24px]">Welcome to Jae Ahn-Benton's website.</p>
             </div>
-            <div className="code-greeting w-3/4 max-w-[600px] border-black border-4 bg-zinc-700 text-zinc-200 rounded-3xl mx-12 pl-12 mt-5 mb-[20vh] text-[14px] md:text-[18px] lg:text-[24px]">
-                <p className="font-mono">if (interested) &#123;</p>
-                <p className="font-mono pl-6">readMore&#40;
-                    <Link to="/about" className="font-mono text-yellow-600 hover:underline">aboutMe</Link>
-                    <span className="font-mono">&#41;;</span>
+            <div className="code-greeting w-3/4 max-w-[600px] border-black border-4 bg-zinc-700 text-zinc-200 rounded-3xl mx-12 pl-12 mt-5 mb-2 text-[14px] md:text-[18px] lg:text-[24px]">
+                <p className="font-mono">{languageSwitch === 'javascript' ? 'if (interested) {' : 'if interested:'}</p>
+                <p className="font-mono pl-10">{languageSwitch === 'javascript' ? 'readMore' : 'read_more'}&#40;
+                    <Link to="/about" className="font-mono text-yellow-600 hover:underline">{languageSwitch === 'javascript' ? 'aboutMe' : 'about_me'}</Link>
+                    <span className="font-mono">&#41;{languageSwitch === 'javascript' ? ';' : ''}</span>
                 </p>
-                <p className="font-mono">&#125; else if (hiring) &#123;</p>
-                <p className="font-mono pl-6">download&#40;
-                    <a href={resume} download className="font-mono text-yellow-600 cursor-pointer hover:underline">myResume</a>
-                &#41;;</p>
-                <p className="font-mono">&#125; else &#123;</p>
-                <p className="font-mono pl-6">contactMe&#40;
+                <p className="font-mono">{languageSwitch === 'javascript' ? '} else if (hiring) {' : 'elif hiring: '}</p>
+                <p className="font-mono pl-10">download&#40;
+                    <a href={resume} download className="font-mono text-yellow-600 cursor-pointer hover:underline">{languageSwitch === 'javascript' ? 'myResume' : 'my_resume'}</a>
+                &#41;{languageSwitch === 'javascript' ? ';' : ''}</p>
+                <p className="font-mono">{languageSwitch === 'javascript' ? '} else {' : 'else: '}</p>
+                <p className="font-mono pl-10">{languageSwitch === 'javascript' ? 'contactMe' : 'contact_me'}&#40;
                     <a href="mailto:jaeahn2010@gmail.com" className="font-mono text-yellow-600 cursor-pointer hover:underline">here</a>
-                &#41;;</p>
-                <p className="font-mono">&#125;</p>
+                &#41;{languageSwitch === 'javascript' ? ';' : ''}</p>
+                {languageSwitch === 'javascript' ? <p className="font-mono">&#125;</p> : <p className='pb-4'></p>}
+            </div>
+            <div className='flex justify-around w-1/2 my-5'>
+                <img className={languageSwitchStyle} src={javascriptIcon} onClick={() => setLanguageSwitch('javascript')}/>
+                <img className={languageSwitchStyle} src={pythonIcon} onClick={() => setLanguageSwitch('python')}/>
             </div>
         </section>
     )

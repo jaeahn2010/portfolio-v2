@@ -14,8 +14,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     })
 
     useEffect(() => {
-        getReviews()
-            .then(reviews => setReviews(reviews))
+        getReviews().then(reviews => setReviews(reviews))
     }, [])
 
     let ratingsTotal = 0
@@ -32,16 +31,11 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     }
 
     function toggleCreateForm() {
-        if (loginStatus) {
-            setShowCreateForm(!showCreateForm)
-        } else {
-            alert("Please sign in to leave a review.")
-        }
+        loginStatus ? setShowCreateForm(!showCreateForm) : alert("Please sign in to leave a review.")
     }
 
     function refreshReviews() {
-        getReviews()
-            .then(newReviewData => setReviews(newReviewData))
+        getReviews().then(newReviewData => setReviews(newReviewData))
     }
 
     function handleSubmit(event) {
@@ -59,9 +53,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         if (!starClicked) {
             let starArr = document.getElementsByClassName('star')
             for (let starIcon of starArr) {
-                if (Number(starIcon.id) <= Number(event.target.id)) {
-                    starIcon.src = starFill
-                }
+                if (Number(starIcon.id) <= Number(event.target.id)) starIcon.src = starFill
             }
         }
     }
@@ -79,11 +71,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         let starArr = document.getElementsByClassName('star')
         setStarClicked(true)
         for (let starIcon of starArr) {
-            if (Number(starIcon.id) <= Number(event.target.id)) {
-                starIcon.src = starFill
-            } else {
-                starIcon.src = star
-            }
+            Number(starIcon.id) <= Number(event.target.id) ? starIcon.src = starFill : starIcon.src = star
         }
         setCreateFormData({
             ...createFormData,
@@ -113,11 +101,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     if (loginStatus && showCreateForm) {
         starRating =
         <div className="flex justify-center">
-            <img className="star w-[30px]" id="1" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[30px]" id="2" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[30px]" id="3" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[30px]" id="4" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
-            <img className="star w-[30px]" id="5" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>
+            {[1, 2, 3, 4, 5].map(starCount => <img className="star w-[30px]" id={starCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>)}
         </div>
         reviewForm =
         <form
@@ -133,7 +117,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
                 value={createFormData.rating}
                 onChange={handleInputChange}
             />
-            <br />
+            <br/>
             <textarea
                 name="comment"
                 className="p-2 my-2 h-[100px] w-full bg-gray-100"
@@ -141,11 +125,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
                 value={createFormData.comment}
                 onChange={handleInputChange}
             />
-            <button
-                type="submit"
-                className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">
-                Post
-            </button>
+            <button type="submit" className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">Post</button>
         </form>
     }
 
@@ -153,12 +133,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         <div className='bg-gray-300 rounded-t-lg p-4 pb-10 mt-4 space-y-4 relative mx-auto'>
             <h1 className='text-xl font-bold'>Reviews</h1>
             <p className="text-center">Overall rating: {ratingsAverage.toFixed(2)} / 5</p>
-            <button
-                onClick={toggleCreateForm}
-                className="top-0 right-5 absolute text-white hover:bg-green-800 font-bold py-2 px-4 bg-green-900 rounded cursor-pointer mr-2"
-            >
-                {btnText}
-            </button>
+            <button onClick={toggleCreateForm} className="top-0 right-5 absolute text-white hover:bg-green-800 font-bold py-2 px-4 bg-green-900 rounded cursor-pointer mr-2">{btnText}</button>
             {starRating}
             {reviewForm}
             {reviewElements}
