@@ -13,15 +13,14 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         comment: ''
     })
 
+    let btnStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 p-2'
+
     useEffect(() => {
         getReviews().then(reviews => setReviews(reviews))
     }, [])
 
-    let ratingsTotal = 0
-    for (let review of reviews) {
-        ratingsTotal += Number(review.rating)
-    }
-    let ratingsAverage = ratingsTotal / reviews.length
+    let ratingsTotal = reviews.length ? reviews.reduce((total, review) => total + Number(review.rating), 0) : 0
+    let ratingsAverage = reviews.length ? ratingsTotal / reviews.length : 0
 
     function handleInputChange(event) {
         setCreateFormData({
@@ -79,34 +78,31 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         })
     }
 
-    let reviewElements = [<p key='0' className='text-center'>No reviews yet. Be the first to review!</p>]
-    if (reviews.length > 0) {
-        reviewElements = reviews.map(review => {
-            return <Review
-                key={review._id}
-                data={review}
-                refreshReviews={refreshReviews}
-                loginStatus={loginStatus}
-                currentUsername={currentUsername}
-                currentUserId={currentUserId}
-            />
-        })
-    }
+    let reviewElements = reviews.length ? reviews.map(review => 
+        <Review
+            key={review._id}
+            review={review}
+            refreshReviews={refreshReviews}
+            loginStatus={loginStatus}
+            currentUsername={currentUsername}
+            currentUserId={currentUserId}
+        />)
+    : <p className='text-center my-5'>No reviews yet. Be the first to review!</p>
 
-    let btnText = 'Leave a Review'
-    if (showCreateForm) btnText = 'Close'
-
+    let btnText = showCreateForm ? 'Close ' : 'Leave a Review'
     let starRating
     let reviewForm
     if (loginStatus && showCreateForm) {
         starRating =
         <div className="flex justify-center">
-            {[1, 2, 3, 4, 5].map(starCount => <img className="star w-[30px]" id={starCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>)}
+            {[1, 2, 3, 4, 5].map(starCount => <img key={starCount} className="star w-[30px]" id={starCount} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={handleClick} src={star}/>)}
         </div>
         reviewForm =
         <form
             onSubmit={handleSubmit}
-            className="bg-gray-100 rounded-lg p-4 my-2 border-gray-700 border-2 w-[80vw] mx-auto text-right">
+            className="flex flex-col items-center justify-center bg-stone-200 rounded-lg p-4 my-2 border-stone-800 border-2 w-[50vw]">
+            <p className="my-3 font-bold text-xl">Your review</p>
+            {starRating}
             <input
                 name="rating"
                 type="number"
@@ -120,21 +116,20 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
             <br/>
             <textarea
                 name="comment"
-                className="p-2 my-2 h-[100px] w-full bg-gray-100"
+                className="p-2 my-2 h-[100px] w-full bg-stone-100 border-stone-800 border-2 rounded-xl"
                 placeholder="Your comments"
                 value={createFormData.comment}
                 onChange={handleInputChange}
             />
-            <button type="submit" className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">Post</button>
+            <button type="submit" className={btnStyle}>Post</button>
         </form>
     }
 
     return (
-        <div className='bg-gray-300 rounded-t-lg p-4 pb-10 mt-4 space-y-4 relative mx-auto'>
-            <h1 className='text-xl font-bold'>Reviews</h1>
-            <p className="text-center">Overall rating: {ratingsAverage.toFixed(2)} / 5</p>
-            <button onClick={toggleCreateForm} className="top-0 right-5 absolute text-white hover:bg-green-800 font-bold py-2 px-4 bg-green-900 rounded cursor-pointer mr-2">{btnText}</button>
-            {starRating}
+        <div className='flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4'>
+            <h1 className='text-3xl font-bold my-5'>Reviews</h1>
+            <p className="my-5">Overall rating: {ratingsAverage.toFixed(2)} / 5</p>
+            <button onClick={toggleCreateForm} className={btnStyle}>{btnText}</button>
             {reviewForm}
             {reviewElements}
         </div>

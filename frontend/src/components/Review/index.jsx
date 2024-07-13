@@ -3,18 +3,17 @@ import { updateReview, deleteReview, getReviewerById } from "../../../utils/back
 import star from "../../assets/star.svg"
 import starFill from '../../assets/star-fill.svg'
 
-export default function Review({ data, refreshReviews, loginStatus, currentUsername, currentUserId }) {
+export default function Review({ review, refreshReviews, loginStatus, currentUsername, currentUserId }) {
     const [reviewerName, setReviewerName] = useState('')
     const [showEditForm, setShowEditForm] = useState(false)
     const [editFormData, setEditFormData] = useState({
-        userId: data.userId,
-        rating: data.rating,
-        comment: data.comment,
+        userId: review.userId,
+        rating: review.rating,
+        comment: review.comment,
     })
 
     useEffect(() => {
-        getReviewerById(data.userId)
-            .then(reviewer => setReviewerName(`${reviewer.firstName} ${reviewer.lastName}`))
+        getReviewerById(review.userId).then(reviewer => setReviewerName(`${reviewer.firstName} ${reviewer.lastName}`))
     }, [])
 
     function handleInputChange(event) {
@@ -27,26 +26,21 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
     function handleSubmit(event) {
         event.preventDefault()
         setShowEditForm(false)
-        updateReview(editFormData, data._id)
-            .then(() => refreshReviews())
+        updateReview(editFormData, review._id).then(() => refreshReviews())
     }
 
     function handleDelete() {
-        if (confirm("Are you sure you would like to delete this offer?")) {
-            deleteReview(data._id)
-                .then(() => refreshReviews())
+        if (confirm("Are you sure you would like to delete this review?")) {
+            deleteReview(review._id).then(() => refreshReviews())
         }
     }
 
     let btns
     let starRating = []
-    for (let i = 0; i < data.rating; i++) {
-        starRating.push(<img key={i + 1} src={starFill}/>)
+    for (let i = 0; i < 5; i++) {
+        starRating.push(<img key={i + 1} src={i < review.rating ? starFill : star}/>)
     }
-    for (let j = 0; j < 5 - data.rating; j++) {
-        starRating.push(<img key={5 - j} src={star}/>)
-    }
-    if (showEditForm && loginStatus && data.userId === currentUserId) {
+    if (showEditForm && loginStatus && review.userId === currentUserId) {
         return (
             <form
                 onSubmit={handleSubmit}
@@ -75,7 +69,7 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
             </form>
         )
     } else {
-        if (loginStatus && data.userId === currentUserId) {
+        if (loginStatus && review.userId === currentUserId) {
             btns =
             <div className="flex justify-end">
                 <button onClick={() => setShowEditForm(true)} className="text-white hover:bg-gray-800 font-bold py-2 px-4 bg-gray-700 rounded cursor-pointer mr-2">Edit</button>
@@ -89,7 +83,7 @@ export default function Review({ data, refreshReviews, loginStatus, currentUsern
                     <p className="font-bold">Rating:</p>
                     <div className="flex ml-5">{starRating}</div>
                 </div>
-                <p className="my-2">Comment: {data.comment}</p>
+                <p className="my-2">Comment: {review.comment}</p>
                 {btns}
             </div>
         )

@@ -46,7 +46,7 @@ export default function App() {
 
 	if (loginStatus) {
 		authLink = 
-			<button className={authStyle + ' px-2 py-1 bg-gradient-to-r from-red-300 via-red-100 to-red-300'} onClick={() => {
+			<button className='border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-red-300 via-red-100 to-red-300 px-2 py-1' onClick={() => {
 				if (confirm("Are you sure you would like to log out?")) {
 					localStorage.clear()
 					setLoginStatus(false)
