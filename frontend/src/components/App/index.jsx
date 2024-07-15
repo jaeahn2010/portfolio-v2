@@ -23,16 +23,16 @@ export default function App() {
 	const navigate = useNavigate()
 
 	let h1Style = 'p-2 my-3 hover:scale-110 duration-500 hover:underline'
-	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300'
+	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 text-stone-800'
 	let hamburgerStyle = 'border-black border-2 mx-4 max-w-[30px] rounded-xl duration-500 ease-in-out'
 	let bounceImgStyle = 'w-[40px] hover:animate-bounce'
 	let authLink = 
 		<div className='my-5'>
 			<Link to="/auth/signup">
-				<h1 className={authStyle}>Sign Up</h1>
+				<h1 className={authStyle} onClick={() => setHamburgerMenu(false)}>Sign Up</h1>
 			</Link>
 			<Link to="/auth/login">
-				<h1 className={authStyle}>Log In</h1>
+				<h1 className={authStyle} onClick={() => setHamburgerMenu(false)}>Log In</h1>
 			</Link>
 		</div>
 	let userGreeting = ''
@@ -49,9 +49,10 @@ export default function App() {
 
 	if (loginStatus) {
 		authLink = 
-			<button className={`${!darkTheme ? 'bg-gradient-to-r from-red-300 via-red-100 to-red-300' : 'bg-gradient-to-r from-red-600 via-red-300 to-red-600'} border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500  px-2 py-1`} onClick={() => {
+			<button className={`${!darkTheme ? 'bg-gradient-to-r from-red-300 via-red-100 to-red-300' : 'bg-gradient-to-r from-red-600 via-red-300 to-red-600'} border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 px-2 py-1`} onClick={() => {
 				if (confirm("Are you sure you would like to log out?")) {
 					localStorage.clear()
+					setHamburgerMenu(false)
 					setLoginStatus(false)
 					navigate('/')
 				}
@@ -69,16 +70,16 @@ export default function App() {
 		<>
 			<main className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-900'} relative`}>
 				{/* hamburger menu */}
-				<div className={`${hamburgerMenu ? (!darkTheme ? 'bg-stone-300' : 'bg-stone-500') : (!darkTheme ? 'bg-stone-200' : 'bg-stone-900')} absolute duration-500 ease-in-out absolute left-0 top-0 hover:cursor-pointer w-1/6 z-10`} onClick={() => setHamburgerMenu(!hamburgerMenu)}>
+				<div className={`${hamburgerMenu ? (!darkTheme ? 'bg-stone-300' : 'bg-stone-500') : (!darkTheme ? 'bg-stone-200' : 'bg-stone-900')} absolute duration-500 ease-in-out absolute left-0 top-0 hover:cursor-pointer bg-opacity-0 w-1/12 z-10`} onClick={() => setHamburgerMenu(!hamburgerMenu)}>
 					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? 'rotate-45 translate-y-[8px]' : ''} ${hamburgerStyle} mt-6 mb-1`}></div>
 					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? 'rotate-45' : ''} ${hamburgerStyle} my-1`}></div>
 					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? '-rotate-45 -translate-y-[8px]' : ''} ${hamburgerStyle} mt-1 mb-6`}></div>
 				</div>
 				{/* dark theme toggle */}
 				<div className={`absolute right-0 top-0 z-10`}>
-					<div className={`flex ${!darkTheme ? 'justify-start bg-stone-400 border-stone-800' : 'justify-end bg-stone-400 border-stone-200'} duration-500 rounded-3xl border-stone-800 border-2 w-[60px] h-[30px] items-center m-6 shadow-xl`}>
-						<button className={`flex justify-center items-center rounded-full border-stone-800 border-2 h-[25px] w-[30px] bg-stone-200`} onClick={() => setDarkTheme(!darkTheme)}>
-							<img className='w-3/4' src={!darkTheme ? sunIcon : moonIcon}/>
+					<div className={`flex ${!darkTheme ? 'justify-start border-stone-300 border-2' : 'justify-end'} duration-500 rounded-3xl w-[60px] h-[30px] items-center m-6 shadow-xl bg-gradient-to-r from-stone-500 via-stone-100 to-stone-500`}>
+						<button className={`flex justify-center items-center rounded-full border-stone-800 border-2 h-[25px] w-3/5 bg-stone-200`} onClick={() => setDarkTheme(!darkTheme)}>
+							<img className='w-3/4 p-0.5' src={!darkTheme ? sunIcon : moonIcon}/>
 						</button>
 					</div>
 				</div>

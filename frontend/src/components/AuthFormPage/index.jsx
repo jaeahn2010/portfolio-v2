@@ -67,16 +67,16 @@ export default function AuthFormPage() {
 
     return (
         <div className="flex items-center justify-center h-[90vh] mx-auto md:w-[600px]">
-            <div className="bg-gray-800 rounded-lg shadow-xl p-8 w-full max-w-md">
-                <h2 className="text-3xl text-center font-bold text-gray-100 mb-8">{actionText}</h2>
+            <div className="bg-gradient-to-b from-sky-500 via-sky-300 to-sky-500 rounded-lg shadow-xl p-8 w-full max-w-md">
+                <h2 className="text-3xl text-center text-stone-800 font-bold mb-8">{actionText}</h2>
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     {signupFields}
                     <div>
-                        <label className="block text-gray-100 font-bold mb-2" htmlFor="email">
+                        <label className="block text-stone-800 font-bold mb-2" htmlFor="email">
                             Email
                         </label>
                         <input
-                            className="w-full p-2 text-gray-900 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                            className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
                             id="email"
                             name="email"
                             type="email"
@@ -87,11 +87,11 @@ export default function AuthFormPage() {
                         />
                     </div>
                     <div>
-                        <label className="block text-gray-100 font-bold mb-2" htmlFor="password">
+                        <label className="block text-stone-800 font-bold mb-2" htmlFor="password">
                             Password
                         </label>
                         <input
-                            className="w-full p-2 text-gray-900 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                            className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
                             id="password"
                             name="password"
                             type="password"
@@ -102,10 +102,10 @@ export default function AuthFormPage() {
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div>
+                    <div className="flex items-center justify-center">
                         <button
                             type="submit"
-                            className="w-full py-2 px-4 bg-green-700 text-gray-100 rounded-md hover:bg-green-800 transition duration-300">
+                            className="border-stone-800 border-2 my-5 mx-auto rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300 text-stone-800 p-2 w-1/2">
                             {actionText}
                         </button>
                     </div>

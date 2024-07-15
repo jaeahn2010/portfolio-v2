@@ -4,7 +4,7 @@ import Review from "../Review"
 import star from "../../assets/star.svg"
 import starFill from '../../assets/star-fill.svg'
 
-export default function reviewsPage({ loginStatus, currentUsername, currentUserId }) {
+export default function reviewsPage({ loginStatus, currentUsername, currentUserId, darkTheme }) {
     const [reviews, setReviews] = useState([])
     const [starClicked, setStarClicked] = useState(false)
     const [showCreateForm, setShowCreateForm] = useState(false)
@@ -13,7 +13,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         comment: ''
     })
 
-    let btnStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 p-2'
+    let btnStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 p-2 text-stone-800'
 
     useEffect(() => {
         getReviews().then(reviews => setReviews(reviews))
@@ -86,6 +86,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
             loginStatus={loginStatus}
             currentUsername={currentUsername}
             currentUserId={currentUserId}
+            darkTheme={darkTheme}
         />)
     : <p className='text-center my-5'>No reviews yet. Be the first to review!</p>
 
@@ -101,7 +102,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         <form
             onSubmit={handleSubmit}
             className="flex flex-col items-center justify-center bg-stone-200 rounded-lg p-4 my-2 border-stone-800 border-2 w-[50vw]">
-            <p className="my-3 font-bold text-xl">Your review</p>
+            <p className="my-3 font-bold text-xl text-stone-800">Your review</p>
             {starRating}
             <input
                 name="rating"
@@ -116,7 +117,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
             <br/>
             <textarea
                 name="comment"
-                className="p-2 my-2 h-[100px] w-full bg-stone-100 border-stone-800 border-2 rounded-xl"
+                className="p-2 my-2 h-[100px] w-full bg-stone-100 border-stone-800 border-2 rounded-xl text-stone-800"
                 placeholder="Your comments"
                 value={createFormData.comment}
                 onChange={handleInputChange}
@@ -126,12 +127,15 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     }
 
     return (
-        <div className='flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4'>
-            <h1 className='text-3xl font-bold my-5'>Reviews</h1>
-            <p className="my-5">Overall rating: {ratingsAverage.toFixed(2)} / 5</p>
-            <button onClick={toggleCreateForm} className={btnStyle}>{btnText}</button>
-            {reviewForm}
-            {reviewElements}
+        <div className={`${!darkTheme ? 'text-stone-800' : 'text-stone-300'} flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4`}>
+            <h1 className='text-3xl font-bold my-5 underline'>Reviews</h1>
+            <p className="text-xl my-5">Overall rating</p>
+            <p className="text-lg">{ratingsAverage.toFixed(2)} / 5</p>
+            <div className="flex flex-col justify-center items-center mt-48">
+                <button onClick={toggleCreateForm} className={btnStyle}>{btnText}</button>
+                {reviewForm}
+                {reviewElements}
+            </div>
         </div>
     )
 }
