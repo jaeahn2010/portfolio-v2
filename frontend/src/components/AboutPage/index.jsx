@@ -8,7 +8,7 @@ import './styles.css'
 export default function AboutPage({darkTheme}) {
     const [displayEvent, setDisplayEvent] = useState([0, false])
     const [dragPosition, setDragPosition] = useState(0)
-    const dragRef = useRef(false)
+    const [yearPosition, setYearPosition] = useState(0)
     const mouseStartRef = useRef(0)
     const boundaryRef = useRef(null)
     const barRef = useRef(null)
@@ -42,43 +42,42 @@ export default function AboutPage({darkTheme}) {
             year: "since 2023"
         },
     ]
-    const experience = [
+    const experiences = [
         {
-            position: 7,
-            year: 'Mar 2024',
-            event: "Graduated from General Assembly: Software Engineering Immersive Program"
+            date: 'Aug 2003',
+            event: "First took interest in coding and programming by creating simple apps on the TI-83 and TI-84 graphing calculators"
         },
         {
-            position: 6,
-            year: 'Dec 2023',
-            event: "Enrolled in General Assembly: Software Engineering Immersive Program"
-        },
-        {
-            position: 5,
-            year: 'Apr 2023',
-            event: "Became a certified Entry-Level Python Programmer"
-        },
-        {
-            position: 4,
-            year: 'Nov 2022',
-            event: "Enrolled in OpenEDG: Entry-Level Python Programmer self-paced course"
-        },
-        {
-            position: 3,
-            year: 'Jun 2016',
-            event: "Began self-study of C++ with Stroustroup's \"The C++ Programming Language\""
-        },
-        {
-            position: 2,
-            year: 'Aug 2009',
+            date: 'Aug 2009',
             event: "Enrolled in a Java-based computer science course and passed with honors"
         },
         {
-            position: 1,
-            year: 'Aug 2003',
-            event: "First took interest in coding and programming by creating simple apps on the TI-83 and TI-84 graphing calculators"
-        }
+            date: 'Jun 2016',
+            event: "Began self-study of C++ with Stroustroup's \"The C++ Programming Language\""
+        },
+        {
+            date: 'Nov 2022',
+            event: "Enrolled in OpenEDG: Entry-Level Python Programmer self-paced course"
+        },
+        {
+            date: 'Apr 2023',
+            event: "Became a certified Entry-Level Python Programmer"
+        },
+        {
+            date: 'Dec 2023',
+            event: "Enrolled in General Assembly: Software Engineering Immersive Program"
+        },
+        {
+            date: 'Mar 2024',
+            event: "Graduated from General Assembly: Software Engineering Immersive Program, with 4 software projects"
+        },
+        {
+            date: 'Mar 2024',
+            event: "Started working on 3 other software projects, as well as accepting freelance work"
+        },
     ]
+
+    let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
 
     document.addEventListener("scroll", () => {
         const allElems = document.getElementsByTagName('*')
@@ -101,6 +100,7 @@ export default function AboutPage({darkTheme}) {
             let newPos = evt.clientX - boundaryRect.left - mouseDifference
             newPos = Math.max(0, Math.min(boundaryRect.width - 42, newPos)) // Ensure the position is within boundary
             setDragPosition(newPos)
+            setYearPosition(newPos / boundaryRect.width)
         }
 
         const onMouseUp = () => {
@@ -113,13 +113,13 @@ export default function AboutPage({darkTheme}) {
         }
 
     return (
-        <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} w-screen`}>
+        <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} w-screen py-5`}>
             <h1 className="text-center md:text-3xl my-5 py-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
             <div className="slide-left flex justify-center items-center m-5">
                 <p className="md:text-lg max-w-[300px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
                 <img className="ml-3 max-w-[200px] md:max-w-[300px] shadow-2xl rounded-xl"src={self}/>
             </div>
-            <h3 className="section-title m-5 text-3xl text-center">BACKGROUND</h3>
+            <h3 className={sectionTitleStyle}>BACKGROUND</h3>
             <div className="slide-right flex justify-center items-center m-5">
                 <div className={`${!darkTheme ? 'bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500' : 'bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 text-stone-800'} flex flex-col justify-center mr-10  rounded-xl shadow-2xl max-w-[300px]`}>
                     {stats.map(stat => 
@@ -137,7 +137,7 @@ export default function AboutPage({darkTheme}) {
                 </div>
                 <p className="max-w-[300px] md:text-lg">My 16 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
             </div>
-            <h3 className="section-title m-5 text-3xl text-center">CONTACT ME</h3>
+            <h3 className={sectionTitleStyle}>CONTACT ME</h3>
             <div className="slide-left flex justify-center items-center m-5">
                 <p className="max-w-[300px] md:text-lg">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
                 <div className="w-[300px] flex justify-center">
@@ -149,7 +149,7 @@ export default function AboutPage({darkTheme}) {
                     </a>
                 </div>
             </div>
-            <h3 className="section-title m-5 text-3xl text-center">TECHNICAL SKILLS</h3>
+            <h3 className={sectionTitleStyle}>TECHNICAL SKILLS</h3>
             <div className="flex justify-center items-center">
                 <p className="text-[100px] md:text-[200px] mx-10">&#91;</p>
                 <div className="all-skills flex justify-center">
@@ -180,48 +180,15 @@ export default function AboutPage({darkTheme}) {
                 </div>
                 <p className="text-[100px] md:text-[200px] mx-10">&#93;</p>
             </div>
-            <h3 className="section-title m-5 text-3xl text-center">EXPERIENCE</h3>
-            <div ref={boundaryRef} className='relative border-2 border-stone-800 w-3/4 mx-auto my-5 rounded-xl h-[20px] shadow-3xl w-[50vw] bg-gradient-to-r from-stone-300 via-stone-200 to-stone-300'>
-                <button ref={barRef} className={`absolute w-[40px] h-[17px] border-2 border-stone-800 rounded-full bg-gradient-to-r from-sky-500 via-sky-300 to-sky-500`} style={{left: `${dragPosition}px`}} onMouseDown={handleMouseDown}></button>
+            <h3 className={sectionTitleStyle}>EXPERIENCE</h3>
+            {/* drag bar */}
+            <div ref={boundaryRef} className={`relative w-3/4 mx-auto my-5 rounded-xl h-[20px] shadow-3xl w-[50vw] bg-gradient-to-r from-stone-500 via-stone-100 to-stone-500`}>
+                <button ref={barRef} className={`absolute w-[40px] h-[17px] top-[1.3px] rounded-full bg-gradient-to-r from-sky-500 via-sky-300 to-sky-500`} style={{left: `${dragPosition}px`}} onMouseDown={handleMouseDown}></button>
             </div>
-            <section className='flex justify-center items-center text-xl border-stone-800 border-2 rounded-xl m-5 h-[50vh] bg-gradient-to-r from-sky-500 via-sky-200 to-sky-500'>
-                TEXT
+            <section className='flex flex-col justify-center items-center rounded-xl my-5 mx-auto p-5 w-1/2 h-[30vh] bg-gradient-to-r from-sky-500 via-sky-200 to-sky-500'>
+                <p className='m-5 h-1/4 font-bold underline text-3xl text-stone-800'>{experiences.filter(experience => experiences.indexOf(experience) / experiences.length <= yearPosition).reverse()[0].date}</p>
+                <p className='m-5 h-3/4 text-xl text-stone-800'>{experiences.filter(experience => experiences.indexOf(experience) / experiences.length <= yearPosition).reverse()[0].event}</p>
             </section>
-            {/* <section className='my-5'>
-                {experience.map(section => 
-                    <div key={section.position} className="flex justify-center">
-                        <div id={`timeline-${section.position}`} className={`${(section.position % 2) ? '' : 'border-black border-y-2 border-l-2 bg-gradient-to-b from-sky-100 via-sky-300'} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-l-xl`}>
-                            {!(section.position % 2) ?
-                                <>
-                                    <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
-                                        evt.preventDefault()
-                                        setDisplayEvent([section.position, !displayEvent[1]])
-                                        setElemId(Number(evt.target.id.slice(5)))
-                                    }}>{section.year}</p>
-                                    <div className="flex flex-col h-3/4 justify-center">
-                                        <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
-                                    </div> 
-                                </>
-                            : ''}
-                        </div>
-                        <div className={`border-black border-x-2 w-[10px] ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[200px]' : 'h-[40px]'}`}></div>
-                        <div className={`${(section.position % 2) ? 'border-black border-y-2 border-r-2 bg-gradient-to-b from-sky-100 via-sky-300' : ''} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-r-xl`}>
-                            {(section.position % 2) ?
-                                <>
-                                    <p id={`year-${section.position}`} className="text-center pt-2 font-bold cursor-pointer" onClick={(evt) => {
-                                        evt.preventDefault()
-                                        setDisplayEvent([section.position, !displayEvent[1]])
-                                        setElemId(Number(evt.target.id.slice(5)))
-                                    }}>{section.year}</p>
-                                    <div className="flex flex-col h-3/4 justify-center">
-                                        <p id={`event-${section.position}`} className={`text-[12px] text-center ${(displayEvent[1] && displayEvent[0] === section.position) ? 'block' : 'hidden'}`}>{section.event}</p>
-                                    </div> 
-                                </>
-                            : ''}
-                        </div>
-                    </div>
-                )}
-            </section> */}
         </main>
     )
 }

@@ -84,16 +84,16 @@ export default function App() {
 				</div>
 				{/* nav bar */}
 				<nav className={`${!darkTheme ? 'bg-stone-300' : 'bg-stone-500 text-stone-200'} ${hamburgerMenu ? '' : '-translate-x-[1000px]'} text-center text-xl duration-500 ease-in-out absolute w-1/6 left-0 top-0 h-full pt-16`}>
-					<Link to="/">
+					<Link to="/" onClick={() => setHamburgerMenu(false)}>
 						<h1 className={h1Style}>Home</h1>
 					</Link>
-					<Link to="/about">
+					<Link to="/about" onClick={() => setHamburgerMenu(false)}>
 						<h1 className={h1Style}>About</h1>
 					</Link>
-					<Link to="/projects">
+					<Link to="/projects" onClick={() => setHamburgerMenu(false)}>
 						<h1 className={h1Style}>Projects</h1>
 					</Link>
-					<Link to="/reviews">
+					<Link to="/reviews" onClick={() => setHamburgerMenu(false)}>
 						<h1 className={h1Style}>Reviews</h1>
 					</Link>
 					{userGreeting}
