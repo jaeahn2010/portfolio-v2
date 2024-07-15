@@ -6,7 +6,7 @@ import './styles.css'
 import javascriptIcon from '../../assets/javascript.png'
 import pythonIcon from '../../assets/python.png'
 
-export default function HomePage() {
+export default function HomePage({darkTheme}) {
     const [languageSwitch, setLanguageSwitch] = useState('javascript')
     let languageSwitchStyle = 'h-[30px] hover:animate-spin hover:cursor-pointer'
 
@@ -16,9 +16,9 @@ export default function HomePage() {
                 <img className="w-3/4 max-w-[600px] rounded-3xl" src={homepageImage}/>
             </div>
             <div>
-                <p className="welcome-message font-mono text-[12px] md:text-[18px] lg:text-[24px]">Welcome to Jae Ahn-Benton's website.</p>
+                <p className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} welcome-message font-mono text-[12px] md:text-[18px] lg:text-[24px]`}>Welcome to Jae Ahn-Benton's website.</p>
             </div>
-            <div className="code-greeting w-3/4 max-w-[600px] border-black border-4 bg-zinc-700 text-zinc-200 rounded-3xl mx-12 pl-12 mt-5 mb-2 text-[14px] md:text-[18px] lg:text-[24px]">
+            <div className={`${!darkTheme ? 'border-stone-800' : 'border-stone-200'} code-greeting w-3/4 max-w-[600px] border-4 bg-zinc-700 text-zinc-200 rounded-3xl mx-12 pl-12 mt-5 mb-2 text-[14px] md:text-[18px] lg:text-[24px]`}>
                 <p className="font-mono">{languageSwitch === 'javascript' ? 'if (interested) {' : 'if interested:'}</p>
                 <p className="font-mono pl-10">{languageSwitch === 'javascript' ? 'readMore' : 'read_more'}&#40;
                     <Link to="/about" className="font-mono text-yellow-600 hover:underline">{languageSwitch === 'javascript' ? 'aboutMe' : 'about_me'}</Link>

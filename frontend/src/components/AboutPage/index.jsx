@@ -1,10 +1,17 @@
 import self from '../../assets/self.png'
+import fastForwardIcon from '../../assets/fast-forward.png'
+import rewindIcon from '../../assets/rewind.png'
 import CountUp from "react-countup"
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './styles.css'
 
-export default function AboutPage() {
+export default function AboutPage({darkTheme}) {
     const [displayEvent, setDisplayEvent] = useState([0, false])
+    const [dragPosition, setDragPosition] = useState(0)
+    const dragRef = useRef(false)
+    const mouseStartRef = useRef(0)
+    const boundaryRef = useRef(null)
+    const barRef = useRef(null)
     const stats = [
         {
             id: 1,
@@ -83,16 +90,38 @@ export default function AboutPage() {
         }
     })
 
+    const handleMouseDown = (evt) => {
+        const boundary = boundaryRef.current
+        const boundaryRect = boundary.getBoundingClientRect()
+        const barRect = barRef.current.getBoundingClientRect()
+        let mouseDifference = evt.clientX - barRect.left
+        mouseStartRef.current = evt.clientX - dragPosition
+
+        const onMouseMove = (evt) => {
+            let newPos = evt.clientX - boundaryRect.left - mouseDifference
+            newPos = Math.max(0, Math.min(boundaryRect.width - 42, newPos)) // Ensure the position is within boundary
+            setDragPosition(newPos)
+        }
+
+        const onMouseUp = () => {
+            document.removeEventListener("mousemove", onMouseMove)
+            document.removeEventListener("mouseup", onMouseUp)
+        }
+
+        document.addEventListener("mousemove", onMouseMove)
+        document.addEventListener("mouseup", onMouseUp)
+        }
+
     return (
-        <main className="w-screen">
-            <h1 className="text-center md:text-3xl my-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
+        <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} w-screen`}>
+            <h1 className="text-center md:text-3xl my-5 py-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
             <div className="slide-left flex justify-center items-center m-5">
                 <p className="md:text-lg max-w-[300px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
                 <img className="ml-3 max-w-[200px] md:max-w-[300px] shadow-2xl rounded-xl"src={self}/>
             </div>
             <h3 className="section-title m-5 text-3xl text-center">BACKGROUND</h3>
             <div className="slide-right flex justify-center items-center m-5">
-                <div className="flex flex-col justify-center mr-10 bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 rounded-xl shadow-2xl max-w-[300px]">
+                <div className={`${!darkTheme ? 'bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500' : 'bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 text-stone-800'} flex flex-col justify-center mr-10  rounded-xl shadow-2xl max-w-[300px]`}>
                     {stats.map(stat => 
                         <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center">
                             <CountUp
@@ -113,7 +142,7 @@ export default function AboutPage() {
                 <p className="max-w-[300px] md:text-lg">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
                 <div className="w-[300px] flex justify-center">
                     <a href="mailto:jaeahn2010@gmail.com">
-                        <div className="flex flex-col justify-center items-center border-black border-2 rounded-full w-[100px] h-[100px] bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 shadow-2xl hover:cursor-pointer hover:animate-bounce">
+                        <div className={`${!darkTheme ? 'bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500' : 'bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 text-stone-800'} flex flex-col justify-center items-center rounded-full w-[100px] h-[100px] shadow-2xl hover:cursor-pointer hover:animate-spin`}>
                             <p className="text-3xl">@</p>
                             <p>Contact Me</p>
                         </div>
@@ -122,8 +151,8 @@ export default function AboutPage() {
             </div>
             <h3 className="section-title m-5 text-3xl text-center">TECHNICAL SKILLS</h3>
             <div className="flex justify-center items-center">
-                <p className="text-[100px] md:text-[200px]">&#91;</p>
-                <div className="all-skills flex justify-center items">
+                <p className="text-[100px] md:text-[200px] mx-10">&#91;</p>
+                <div className="all-skills flex justify-center">
                     <div className="skills-col-1">
                         <img className="skill" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
                         <img className="skill" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
@@ -149,11 +178,16 @@ export default function AboutPage() {
                         <img className="skill" src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
                     </div>
                 </div>
-                <p className="text-[100px] md:text-[200px]">&#93;</p>
+                <p className="text-[100px] md:text-[200px] mx-10">&#93;</p>
             </div>
-                
             <h3 className="section-title m-5 text-3xl text-center">EXPERIENCE</h3>
-            <section className='my-5'>
+            <div ref={boundaryRef} className='relative border-2 border-stone-800 w-3/4 mx-auto my-5 rounded-xl h-[20px] shadow-3xl w-[50vw] bg-gradient-to-r from-stone-300 via-stone-200 to-stone-300'>
+                <button ref={barRef} className={`absolute w-[40px] h-[17px] border-2 border-stone-800 rounded-full bg-gradient-to-r from-sky-500 via-sky-300 to-sky-500`} style={{left: `${dragPosition}px`}} onMouseDown={handleMouseDown}></button>
+            </div>
+            <section className='flex justify-center items-center text-xl border-stone-800 border-2 rounded-xl m-5 h-[50vh] bg-gradient-to-r from-sky-500 via-sky-200 to-sky-500'>
+                TEXT
+            </section>
+            {/* <section className='my-5'>
                 {experience.map(section => 
                     <div key={section.position} className="flex justify-center">
                         <div id={`timeline-${section.position}`} className={`${(section.position % 2) ? '' : 'border-black border-y-2 border-l-2 bg-gradient-to-b from-sky-100 via-sky-300'} ${(displayEvent[1] && displayEvent[0] === section.position) ? 'h-[160px]' : 'h-[40px]'} w-[120px] rounded-l-xl`}>
@@ -187,7 +221,7 @@ export default function AboutPage() {
                         </div>
                     </div>
                 )}
-            </section>
+            </section> */}
         </main>
     )
 }

@@ -10,6 +10,8 @@ import './styles.css'
 import linkedIn from '../../assets/linkedin-logo.png'
 import gitHub from '../../assets/github-logo.png'
 import emailIcon from '../../assets/email-icon.png'
+import sunIcon from '../../assets/sun.png'
+import moonIcon from '../../assets/moon.png'
 import { getUserByToken } from '../../../utils/backend'
 
 export default function App() {
@@ -17,6 +19,7 @@ export default function App() {
 	const [currentUsername, setCurrentUsername] = useState('')
 	const [currentUserId, setCurrentUserId] = useState('')
 	const [hamburgerMenu, setHamburgerMenu] = useState(false)
+	const [darkTheme, setDarkTheme] = useState(false)
 	const navigate = useNavigate()
 
 	let h1Style = 'p-2 my-3 hover:scale-110 duration-500 hover:underline'
@@ -46,7 +49,7 @@ export default function App() {
 
 	if (loginStatus) {
 		authLink = 
-			<button className='border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-red-300 via-red-100 to-red-300 px-2 py-1' onClick={() => {
+			<button className={`${!darkTheme ? 'bg-gradient-to-r from-red-300 via-red-100 to-red-300' : 'bg-gradient-to-r from-red-600 via-red-300 to-red-600'} border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500  px-2 py-1`} onClick={() => {
 				if (confirm("Are you sure you would like to log out?")) {
 					localStorage.clear()
 					setLoginStatus(false)
@@ -56,7 +59,7 @@ export default function App() {
 		userGreeting =
 			<div className='text-sm mt-16'>
 				<p className='rounded-xl p-2'>Logged in as</p>
-				<p className="text-green-700">{currentUsername}</p>
+				<p className={`${!darkTheme ? 'text-green-700' : 'text-green-300'}`}>{currentUsername}</p>
 			</div>
 	} else if (localStorage.userToken) {
 		setLoginStatus(true)
@@ -64,13 +67,23 @@ export default function App() {
 
 	return (
 		<>
-			<main className='relative'>
-				<div className={`${hamburgerMenu ? 'bg-stone-300' : ''} absolute duration-500 ease-in-out absolute left-0 top-0 hover:cursor-pointer w-1/6 z-10`} onClick={() => setHamburgerMenu(!hamburgerMenu)}>
-					<div className={`${hamburgerMenu ? 'rotate-45 translate-y-[8px]' : ''} ${hamburgerStyle} mt-6 mb-1`}></div>
-					<div className={`${hamburgerMenu ? 'rotate-45' : ''} ${hamburgerStyle} my-1`}></div>
-					<div className={`${hamburgerMenu ? '-rotate-45 -translate-y-[8px]' : ''} ${hamburgerStyle} mt-1 mb-6`}></div>
+			<main className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-900'} relative`}>
+				{/* hamburger menu */}
+				<div className={`${hamburgerMenu ? (!darkTheme ? 'bg-stone-300' : 'bg-stone-500') : (!darkTheme ? 'bg-stone-200' : 'bg-stone-900')} absolute duration-500 ease-in-out absolute left-0 top-0 hover:cursor-pointer w-1/6 z-10`} onClick={() => setHamburgerMenu(!hamburgerMenu)}>
+					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? 'rotate-45 translate-y-[8px]' : ''} ${hamburgerStyle} mt-6 mb-1`}></div>
+					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? 'rotate-45' : ''} ${hamburgerStyle} my-1`}></div>
+					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? '-rotate-45 -translate-y-[8px]' : ''} ${hamburgerStyle} mt-1 mb-6`}></div>
 				</div>
-				<nav className={`${hamburgerMenu ? '' : '-translate-x-[1000px]'} text-center text-xl duration-500 ease-in-out bg-stone-300 absolute w-1/6 left-0 top-0 h-full pt-16`}>
+				{/* dark theme toggle */}
+				<div className={`absolute right-0 top-0 z-10`}>
+					<div className={`flex ${!darkTheme ? 'justify-start bg-stone-400 border-stone-800' : 'justify-end bg-stone-400 border-stone-200'} duration-500 rounded-3xl border-stone-800 border-2 w-[60px] h-[30px] items-center m-6 shadow-xl`}>
+						<button className={`flex justify-center items-center rounded-full border-stone-800 border-2 h-[25px] w-[30px] bg-stone-200`} onClick={() => setDarkTheme(!darkTheme)}>
+							<img className='w-3/4' src={!darkTheme ? sunIcon : moonIcon}/>
+						</button>
+					</div>
+				</div>
+				{/* nav bar */}
+				<nav className={`${!darkTheme ? 'bg-stone-300' : 'bg-stone-500 text-stone-200'} ${hamburgerMenu ? '' : '-translate-x-[1000px]'} text-center text-xl duration-500 ease-in-out absolute w-1/6 left-0 top-0 h-full pt-16`}>
 					<Link to="/">
 						<h1 className={h1Style}>Home</h1>
 					</Link>
@@ -87,20 +100,21 @@ export default function App() {
 					{authLink}
 				</nav>
 				<Routes id="pages">
-					<Route path="/" element={<HomePage/>}/>
-					<Route path="/about" element={<AboutPage/>}/>
-					<Route path="/projects" element={<ProjectsPage/>}/>
+					<Route path="/" element={<HomePage darkTheme={darkTheme}/>}/>
+					<Route path="/about" element={<AboutPage darkTheme={darkTheme}/>}/>
+					<Route path="/projects" element={<ProjectsPage darkTheme={darkTheme}/>}/>
 					<Route path="/reviews" element={
 						<ReviewsPage
+							darkTheme={darkTheme}
 							loginStatus={loginStatus}
 							currentUsername={currentUsername}
 							currentUserId={currentUserId}
 						/>}/>
-					<Route path="/auth/:formType" element={<AuthFormPage/>}/>
+					<Route path="/auth/:formType" element={<AuthFormPage darkTheme={darkTheme}/>}/>
 					<Route path="/*" element={<NotFoundPage/>}/>
 				</Routes>
 			</main>
-			<footer className="sticky left-0 bottom-0 w-full py-2 bg-stone-300">
+			<footer className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-500'} sticky left-0 bottom-0 w-full py-2 bg-stone-300`}>
 				<div className="flex justify-around items-center py-2">
 					<a href="https://github.com/jaeahn2010/jaeahn2010" target="_blank" rel="noopener noreferrer">
 						<img className={bounceImgStyle} src={gitHub}/>
