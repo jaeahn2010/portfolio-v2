@@ -76,6 +76,26 @@ export default function AboutPage({darkTheme}) {
             event: "Started working on 3 other software projects, as well as accepting freelance work"
         },
     ]
+    const technicalSkillLinks = [
+        'https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white',
+        'https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white',
+        'https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white',
+        'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black',
+        'https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white',
+        'https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white',
+        'https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white',
+        'https://img.shields.io/badge/Express.js-404D59?style=for-the-badge',
+        'https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white',
+        'https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB',
+        'https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white',
+        'https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white',
+        'https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white',
+        'https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white',
+        'https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white',
+        'https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white',
+        'https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white',
+        'https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white',
+    ]
 
     let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
 
@@ -123,7 +143,7 @@ export default function AboutPage({darkTheme}) {
             <div className="slide-right flex justify-center items-center m-5">
                 <div className={`${!darkTheme ? 'bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500' : 'bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 text-stone-800'} flex flex-col justify-center mr-10  rounded-xl shadow-2xl max-w-[300px]`}>
                     {stats.map(stat => 
-                        <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center">
+                        <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center hover:bg-gradient-to-r from-stone-400 via-stone-200 to-stone-400">
                             <CountUp
                                 className="text-3xl"
                                 start={0}
@@ -150,35 +170,16 @@ export default function AboutPage({darkTheme}) {
                 </div>
             </div>
             <h3 className={sectionTitleStyle}>TECHNICAL SKILLS</h3>
-            <div className="flex justify-center items-center">
-                <p className="text-[100px] md:text-[200px] mx-10">&#91;</p>
-                <div className="all-skills flex justify-center">
-                    <div className="skills-col-1">
-                        <img className="skill" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-                        <img className="skill" src='https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white'/>
-                        <img className="skill" src='https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white'/>
-                    </div>
-                    <div className="skills-col-2">
-                        <img className="skill" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge"/>
-                        <img className="skill" src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-                        <img className="skill" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white"/>
-                    </div>
-                    <div className="skills-col-3">
-                        <img className="skill" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white"/>
-                        <img className="skill" src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
+            <div className="flex items-center justify-center h-1/2">
+                <div className="relative w-64 h-64 perspective-1000">
+                    <div className="absolute w-full h-2/3" style={{ transformStyle: 'preserve-3d', animation: 'reverse rotate 20s infinite linear' }}>
+                    {technicalSkillLinks.map((skill, index) => (
+                        <div key={index} className='absolute top-1/2 left-1/2 w-32 h-16 bg-gradient-to-r from-sky-500 via-sky-100 to-sky-500 text-white flex items-center justify-center rounded-xl' style={{transform: `rotateY(${index * 360 / technicalSkillLinks.length}deg) translateZ(400px)`}}>
+                            <img src={skill}/>
+                        </div>
+                    ))}
                     </div>
                 </div>
-                <p className="text-[100px] md:text-[200px] mx-10">&#93;</p>
             </div>
             <h3 className={sectionTitleStyle}>EXPERIENCE</h3>
             {/* drag bar */}

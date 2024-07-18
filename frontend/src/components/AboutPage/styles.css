@@ -71,3 +71,12 @@
 @keyframes draw-border {
     to {border: 4px solid black; background-image: linear-gradient(rgb(224 242 254), rgb(14 165 233));}
 }
+
+@keyframes rotate {
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(360deg);}
+}
+  
+.perspective-1000 {
+    perspective: 1000px;
+}

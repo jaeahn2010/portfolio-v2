@@ -10,10 +10,10 @@ export default function AuthFormPage() {
         firstName: "",
         lastName: "",
         password: "",
-    });
+    })
     const handleInputChange = (event) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
-    };
+        setFormData({ ...formData, [event.target.name]: event.target.value })
+    }
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -35,11 +35,11 @@ export default function AuthFormPage() {
         signupFields = 
         <>
             <div>
-                <label className="block text-gray-100 font-bold mb-2" htmlFor="firstName">
+                <label className="block text-stone-800 font-bold mb-2" htmlFor="firstName">
                     First Name
                 </label>
                 <input
-                    className="w-full p-2 text-gray-900 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                    className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
                     id="firstName"
                     name="firstName"
                     required
@@ -49,11 +49,11 @@ export default function AuthFormPage() {
                 />
             </div>
             <div>
-                <label className="block text-gray-100 font-bold mb-2" htmlFor="lastName">
+                <label className="block text-stone-800 font-bold mb-2" htmlFor="lastName">
                     Last Name
                 </label>
                 <input
-                    className="w-full p-2 text-gray-900 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                    className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
                     id="lastName"
                     name="lastName"
                     required

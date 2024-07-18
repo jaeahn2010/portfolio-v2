@@ -77,14 +77,14 @@ export default function App() {
 				</div>
 				{/* dark theme toggle */}
 				<div className={`absolute right-0 top-0 z-10`}>
-					<div className={`flex ${!darkTheme ? 'justify-start border-stone-300 border-2' : 'justify-end'} duration-500 rounded-3xl w-[60px] h-[30px] items-center m-6 shadow-xl bg-gradient-to-r from-stone-500 via-stone-100 to-stone-500`}>
-						<button className={`flex justify-center items-center rounded-full border-stone-800 border-2 h-[25px] w-3/5 bg-stone-200`} onClick={() => setDarkTheme(!darkTheme)}>
+					<div className={`flex ${!darkTheme ? 'justify-start border-stone-300 border-2' : 'justify-end'} duration-500 rounded-3xl w-[60px] h-[30px] items-center m-6 shadow-xl bg-gradient-to-r from-stone-500 to-stone-300`}>
+						<button className={`flex justify-center items-center rounded-full border-stone-500 border-2 h-[25px] w-3/5 bg-stone-200`} onClick={() => setDarkTheme(!darkTheme)}>
 							<img className='w-3/4 p-0.5' src={!darkTheme ? sunIcon : moonIcon}/>
 						</button>
 					</div>
 				</div>
 				{/* nav bar */}
-				<nav className={`${!darkTheme ? 'bg-stone-300' : 'bg-stone-500 text-stone-200'} ${hamburgerMenu ? '' : '-translate-x-[1000px]'} text-center text-xl duration-500 ease-in-out absolute w-1/6 left-0 top-0 h-full pt-16`}>
+				<nav className={`${!darkTheme ? 'bg-stone-300' : 'bg-stone-400 text-stone-200'} ${hamburgerMenu ? '' : '-translate-x-[1000px]'} text-center text-xl duration-500 ease-in-out absolute w-1/6 left-0 top-0 h-full pt-16`}>
 					<Link to="/" onClick={() => setHamburgerMenu(false)}>
 						<h1 className={h1Style}>Home</h1>
 					</Link>
@@ -115,7 +115,8 @@ export default function App() {
 					<Route path="/*" element={<NotFoundPage/>}/>
 				</Routes>
 			</main>
-			<footer className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-500'} sticky left-0 bottom-0 w-full py-2 bg-stone-300`}>
+			{/* footer */}
+			<footer className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-400'} sticky left-0 bottom-0 w-full py-2 bg-stone-300 border-t-2 border-stone-800`}>
 				<div className="flex justify-around items-center py-2">
 					<a href="https://github.com/jaeahn2010/jaeahn2010" target="_blank" rel="noopener noreferrer">
 						<img className={bounceImgStyle} src={gitHub}/>
