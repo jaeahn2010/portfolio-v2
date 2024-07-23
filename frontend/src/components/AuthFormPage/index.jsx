@@ -112,5 +112,5 @@ export default function AuthFormPage() {
                 </form>
             </div>
         </div>
-    );
+    )
 }

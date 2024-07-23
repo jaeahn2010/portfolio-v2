@@ -56,11 +56,11 @@ export default function AboutPage({darkTheme}) {
             event: "Began self-study of C++ with Stroustroup's \"The C++ Programming Language\""
         },
         {
-            date: 'Nov 2022',
+            date: 'Apr 2022',
             event: "Enrolled in OpenEDG: Entry-Level Python Programmer self-paced course"
         },
         {
-            date: 'Apr 2023',
+            date: 'Jun 2022',
             event: "Became a certified Entry-Level Python Programmer"
         },
         {
