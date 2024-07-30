@@ -5,6 +5,7 @@ import heyThere from '../../assets/heythere-ss.png'
 import RER from '../../assets/rer-ss.png'
 import aimAlign from '../../assets/aimalign-ss.png'
 import iydvAutoscheduler from '../../assets/iydv-autoscheduler-ss.png'
+import wordLock from '../../assets/wordlock-ss.png'
 
 export default function Gallery() {
     const projects = [
@@ -76,6 +77,16 @@ export default function Gallery() {
             screenshot: "#",
             description: "NannyNetLV brings parents and babysitters of the Las Vegas valley together by making the search simple. Find your perfect babysitter based on language spoken, location, childcare philosophy, and your budget!",
             repoLink: "https://github.com/jaeahn2010/nannynetlv",
+            appLink: "#",
+        },
+        {
+            projectId: "JYAB0008",
+            projectName: "WordLock",
+            startDate: "July 2024",
+            badges: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
+            screenshot: wordLock,
+            description: "Need a strong password or need to send a secret message? WordLock provides customized encryption methods to secure your data and protect your privacy. More encryption methods added frequently!",
+            repoLink: "https://github.com/jaeahn2010/wordlock",
             appLink: "#",
         },
     ]

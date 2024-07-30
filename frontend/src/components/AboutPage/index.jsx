@@ -37,7 +37,7 @@ export default function AboutPage({darkTheme}) {
         {
             id: 4,
             stat: "software projects",
-            endNum: 7,
+            endNum: 8,
             tagline: "software projects",
             year: "since 2023"
         },
@@ -95,6 +95,7 @@ export default function AboutPage({darkTheme}) {
         'https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white',
         'https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white',
         'https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white',
+        'https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white'
     ]
 
     let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
