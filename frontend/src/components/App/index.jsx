@@ -23,7 +23,7 @@ export default function App() {
 	const navigate = useNavigate()
 
 	let h1Style = 'p-2 my-3 hover:scale-110 duration-500 hover:underline'
-	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 text-stone-800'
+	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-auto rounded-xl shadow-xl hover:scale-110 duration-500 w-1/2 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 text-stone-800'
 	let hamburgerStyle = 'border-black border-2 mx-4 max-w-[30px] rounded-xl duration-500 ease-in-out'
 	let bounceImgStyle = 'w-[40px] hover:animate-bounce'
 	let authLink = 
@@ -68,23 +68,23 @@ export default function App() {
 
 	return (
 		<>
-			<main className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-900'} relative`}>
+			<main className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-900'} relative min-h-[80vh]`}>
 				{/* hamburger menu */}
-				<div className={`${hamburgerMenu ? (!darkTheme ? 'bg-stone-300' : 'bg-stone-500') : (!darkTheme ? 'bg-stone-200' : 'bg-stone-900')} absolute duration-500 ease-in-out absolute left-0 top-0 hover:cursor-pointer bg-opacity-0 w-1/12 z-10`} onClick={() => setHamburgerMenu(!hamburgerMenu)}>
+				<div className={`${hamburgerMenu ? (!darkTheme ? 'bg-stone-300' : 'bg-stone-500') : (!darkTheme ? 'bg-stone-200' : 'bg-stone-900')} absolute duration-500 ease-in-out absolute left-0 top-0 hover:cursor-pointer bg-opacity-0 w-[5rem] z-30`} onClick={() => setHamburgerMenu(!hamburgerMenu)}>
 					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? 'rotate-45 translate-y-[8px]' : ''} ${hamburgerStyle} mt-6 mb-1`}></div>
 					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? 'rotate-45' : ''} ${hamburgerStyle} my-1`}></div>
 					<div className={`${!darkTheme ? '' : 'border-stone-200'} ${hamburgerMenu ? '-rotate-45 -translate-y-[8px]' : ''} ${hamburgerStyle} mt-1 mb-6`}></div>
 				</div>
 				{/* dark theme toggle */}
-				<div className={`absolute right-0 top-0 z-10`}>
-					<div className={`flex ${!darkTheme ? 'justify-start border-stone-300 border-2' : 'justify-end'} duration-500 rounded-3xl w-[60px] h-[30px] items-center m-6 shadow-xl bg-gradient-to-r from-stone-500 to-stone-300`}>
-						<button className={`flex justify-center items-center rounded-full border-stone-500 border-2 h-[25px] w-3/5 bg-stone-200`} onClick={() => setDarkTheme(!darkTheme)}>
+				<div className={`absolute right-0 top-0 z-30`}>
+					<div className={`flex ${!darkTheme ? 'justify-start shadow-stone-600' : 'justify-end shadow-stone-500'} duration-500 rounded-full w-[2.5rem] items-center mx-3 my-6 shadow-xl bg-gradient-to-r from-stone-500 to-stone-300`}>
+						<button className={`flex justify-center items-center rounded-full border-stone-500 border-2 w-[1.5rem] h-[1.5rem] bg-stone-200 hover:cursor-pointer`} onClick={() => setDarkTheme(!darkTheme)}>
 							<img className='w-3/4 p-0.5' src={!darkTheme ? sunIcon : moonIcon}/>
 						</button>
 					</div>
 				</div>
 				{/* nav bar */}
-				<nav className={`${!darkTheme ? 'bg-stone-300' : 'bg-stone-400 text-stone-200'} ${hamburgerMenu ? '' : '-translate-x-[1000px]'} text-center text-xl duration-500 ease-in-out absolute w-1/6 left-0 top-0 h-full pt-16`}>
+				<nav className={`${!darkTheme ? 'bg-gradient-to-b from-stone-500 via-stone-300 to-stone-500' : 'bg-gradient-to-b from-stone-900 via-stone-600 to-stone-900 text-stone-200'} ${hamburgerMenu ? 'opacity-100 z-20' : 'hidden'} text-center text-xl ease-in-out absolute left-0 top-0 w-full h-[100vh] pt-16`}>
 					<Link to="/" onClick={() => setHamburgerMenu(false)}>
 						<h1 className={h1Style}>Home</h1>
 					</Link>
@@ -101,17 +101,38 @@ export default function App() {
 					{authLink}
 				</nav>
 				<Routes id="pages">
-					<Route path="/" element={<HomePage darkTheme={darkTheme}/>}/>
-					<Route path="/about" element={<AboutPage darkTheme={darkTheme}/>}/>
-					<Route path="/projects" element={<ProjectsPage darkTheme={darkTheme}/>}/>
+					<Route path="/" element={
+						<HomePage 
+							darkTheme={darkTheme}
+							hamburgerMenu={hamburgerMenu}
+						/>}
+					/>
+					<Route path="/about" element={
+						<AboutPage
+							darkTheme={darkTheme}
+							hamburgerMenu={hamburgerMenu}
+						/>}
+					/>
+					<Route path="/projects" element={
+						<ProjectsPage
+							darkTheme={darkTheme}
+							hamburgerMenu={hamburgerMenu}
+						/>}
+					/>
 					<Route path="/reviews" element={
 						<ReviewsPage
-							darkTheme={darkTheme}
+							darkTheme={darkTheme} hamburgerMenu={hamburgerMenu}
 							loginStatus={loginStatus}
 							currentUsername={currentUsername}
 							currentUserId={currentUserId}
-						/>}/>
-					<Route path="/auth/:formType" element={<AuthFormPage darkTheme={darkTheme}/>}/>
+						/>}
+					/>
+					<Route path="/auth/:formType" element={
+						<AuthFormPage
+							darkTheme={darkTheme}
+							hamburgerMenu={hamburgerMenu}
+						/>}
+					/>
 					<Route path="/*" element={<NotFoundPage/>}/>
 				</Routes>
 			</main>
@@ -128,7 +149,7 @@ export default function App() {
 						<img className={bounceImgStyle} src={emailIcon}/>
 					</a>
 					</div>
-				<p className="text-center border-t-2 border-black">Copyright &#169; 2024 Jae Ahn-Benton</p>
+				<p className="flex justify-center items-center border-t-2 border-stone-800">Copyright &#169; 2024 Jae Ahn-Benton</p>
 			</footer>
 		</>
 	)

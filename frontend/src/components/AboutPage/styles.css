@@ -1,3 +1,9 @@
+.about-title {
+    animation: draw-underline 0.5s ease-out 2s forwards, fade-out 0.5s ease-out 2.5s forwards;
+    border-color: rgb(41, 41, 39);
+    width: 0;
+}
+
 .skill {
     border-radius: 20px;
 }
@@ -42,6 +48,10 @@
     animation: draw-border 1s forwards linear;
 }
 
+.perspective {
+    perspective: 750px;
+}
+
 @keyframes spread-x {
     from {margin: 0;}
     to {margin: 0 30px;}
@@ -76,7 +86,13 @@
     from {transform: rotateY(0deg);}
     to {transform: rotateY(360deg);}
 }
-  
-.perspective-1000 {
-    perspective: 1000px;
+
+@keyframes draw-underline {
+    0% {width: 0;}
+    100% {width: 100%;}
+}
+
+@keyframes fade-out {
+    from {border-color: rgb(41, 41, 39)}
+    to {border-color: rgb(229, 229, 224)}
 }

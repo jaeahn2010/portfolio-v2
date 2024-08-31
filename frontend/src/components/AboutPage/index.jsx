@@ -1,14 +1,15 @@
 import self from '../../assets/self.png'
-import fastForwardIcon from '../../assets/fast-forward.png'
-import rewindIcon from '../../assets/rewind.png'
 import CountUp from "react-countup"
 import { useState, useRef, useEffect } from 'react'
 import './styles.css'
 
 export default function AboutPage({darkTheme}) {
-    const [displayEvent, setDisplayEvent] = useState([0, false])
     const [dragPosition, setDragPosition] = useState(0)
     const [yearPosition, setYearPosition] = useState(0)
+    const [techIndex, setTechIndex] = useState(0)
+    const [techSrc, setTechSrc] = useState('')
+    const [techDisplay, setTechDisplay] = useState('</>')
+    const [coordinates, setCoordinates] = useState([51, 126])
     const mouseStartRef = useRef(0)
     const boundaryRef = useRef(null)
     const barRef = useRef(null)
@@ -23,7 +24,7 @@ export default function AboutPage({darkTheme}) {
         {
             id: 2,
             stat: "music",
-            endNum: 927,
+            endNum: 930,
             tagline: "music clients served",
             year: "since 2008"
         },
@@ -37,7 +38,7 @@ export default function AboutPage({darkTheme}) {
         {
             id: 4,
             stat: "software projects",
-            endNum: 8,
+            endNum: 9,
             tagline: "software projects",
             year: "since 2023"
         },
@@ -76,11 +77,12 @@ export default function AboutPage({darkTheme}) {
             event: "Started working on 3 other software projects, as well as accepting freelance work"
         },
     ]
-    const technicalSkillLinks = [
+    const technicalSkills = [
         'https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white',
         'https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white',
         'https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white',
         'https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black',
+        'https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white',
         'https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white',
         'https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white',
         'https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white',
@@ -95,8 +97,15 @@ export default function AboutPage({darkTheme}) {
         'https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white',
         'https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white',
         'https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white',
-        'https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white'
+        'https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white',
+        'https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white'
     ]
+
+    const xChoices = []
+    const yChoices = [126, 132, 138]
+    for (let i = 51; i <= 135; i += 7) {
+        xChoices.push(i)
+    }
 
     let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
 
@@ -131,11 +140,37 @@ export default function AboutPage({darkTheme}) {
 
         document.addEventListener("mousemove", onMouseMove)
         document.addEventListener("mouseup", onMouseUp)
+    }
+
+    function handleIndex(evt) {
+        evt.target.id === 'left-arrow'
+        ? setTechIndex(techIndex === 0 ? technicalSkills.length - 1 : techIndex - 1)
+        : setTechIndex(techIndex === technicalSkills.length - 1 ? 0 : techIndex + 1)
+    }
+
+    useEffect(() => {
+        let techName = technicalSkills[techIndex].split('/')[4].split('-')[0].replace(/%2B/g, '+').replace(/_/g, ' ')
+        for (let i = 0; i < techName.length; i++) {
+            setTimeout(() => {
+                setTechDisplay(techName.slice(0, i + 1))
+                setCoordinates([xChoices[Math.floor(Math.random() * xChoices.length)], yChoices[Math.floor(Math.random() * yChoices.length)]])
+            }, i * 100)
         }
+        setTechSrc(technicalSkills[techIndex])
+    }, [techIndex])
 
     return (
         <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} w-screen py-5`}>
-            <h1 className="text-center md:text-3xl my-5 py-5">Hello! I'm Jae Ahn-Benton, a full-stack software engineer.</h1>
+            <div className="text-center my-5 py-5 flex flex-col justify-center items-center">
+                <div>
+                    <p className='text-2xl'>Jae Ahn-Benton</p>
+                    <div className={`about-title ${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-t-2`}></div>
+                </div>
+                <div>
+                    <p className='text-lg'>Software Engineer (Full-Stack)</p>
+                    <p className={`about-title shadow-xl shadow-stone-600 ${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-t-2`}></p>
+                </div>
+            </div>
             <div className="slide-left flex justify-center items-center m-5">
                 <p className="md:text-lg max-w-[300px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
                 <img className="ml-3 max-w-[200px] md:max-w-[300px] shadow-2xl rounded-xl"src={self}/>
@@ -171,15 +206,24 @@ export default function AboutPage({darkTheme}) {
                 </div>
             </div>
             <h3 className={sectionTitleStyle}>TECHNICAL SKILLS</h3>
-            <div className="flex items-center justify-center h-1/2">
-                <div className="relative w-64 h-64 perspective-1000">
-                    <div className="absolute w-full h-2/3" style={{ transformStyle: 'preserve-3d', animation: 'reverse rotate 20s infinite linear' }}>
-                    {technicalSkillLinks.map((skill, index) => (
-                        <div key={index} className='absolute top-1/2 left-1/2 w-32 h-16 bg-gradient-to-r from-sky-500 via-sky-100 to-sky-500 text-white flex items-center justify-center rounded-xl' style={{transform: `rotateY(${index * 360 / technicalSkillLinks.length}deg) translateZ(400px)`}}>
-                            <img src={skill}/>
-                        </div>
-                    ))}
-                    </div>
+            <div className="flex flex-col items-center justify-center">
+                <div className='h-1/12 items-center justify-center'>
+                    <img className='w-full h-full' src={techSrc}/>
+                </div>
+                <div className='flex items-center justify-center'>
+                    <button className='text-3xl hover:scale-125 duration-500' id='left-arrow' onClick={handleIndex}>&#xab;</button>
+                    <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="40" y="40" width="120" height="80" rx="10" ry="10" fill="#cccccc" stroke="#333333" strokeWidth="4"/>
+                        <rect x="50" y="50" width="100" height="60" fill="#ffffff"/>
+                        <text x="50%" y="42%" fill="#000000" fontSize="15" fontFamily="'Courier New', monospace" textAnchor="middle" dominantBaseline="middle">
+                            {techDisplay}
+                        </text>
+                        <rect x='20' y='155' width='160' height='15' rx='10' ry='10' fill='#777777'/>
+                        <polygon points='20,160 180,160 158,120 42,120' fill='#333333'/>
+                        <polygon points='35,153 165,153 150,125 50,125' fill='#bbbbbb'/>
+                        <rect x={coordinates[0]} y={coordinates[1]} width='7' height='6' fill='#333333'/>
+                    </svg>
+                    <button className='text-3xl hover:scale-125 duration-500' id='right-arrow' onClick={handleIndex}>&#xbb;</button>
                 </div>
             </div>
             <h3 className={sectionTitleStyle}>EXPERIENCE</h3>
