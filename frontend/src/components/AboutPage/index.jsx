@@ -244,7 +244,7 @@ export default function AboutPage({darkTheme}) {
                     <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <rect x="40" y="40" width="120" height="80" rx="10" ry="10" fill="#cccccc" stroke="#333333" strokeWidth="4"/>
                         <rect x="50" y="50" width="100" height="60" fill="#ffffff"/>
-                        <text x="50%" y="42%" fill="#000000" fontSize="15" fontFamily="'Courier New', monospace" textAnchor="middle" dominantBaseline="middle">
+                        <text x="50%" y="42%" fill="#000000" fontSize="15" textAnchor="middle" dominantBaseline="middle">
                             {techDisplay}
                         </text>
                         <rect x='20' y='155' width='160' height='15' rx='10' ry='10' fill='#777777'/>
@@ -338,8 +338,8 @@ export default function AboutPage({darkTheme}) {
                             <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
                         </svg>
                         </div>
-                        <div key={experience.event} className={`text-stone-200 text-justify m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-700 via-stone-400 to-stone-700`}>
-                            <p>{experience.event}</p>
+                        <div key={experience.event} className={`text-stone-200 m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-700 via-stone-400 to-stone-700`}>
+                            <p className='font-courier font-bold'>{experience.event}</p>
                         </div>
                     </>
                     )}

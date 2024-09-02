@@ -133,7 +133,12 @@ export default function App() {
 							hamburgerMenu={hamburgerMenu}
 						/>}
 					/>
-					<Route path="/*" element={<NotFoundPage/>}/>
+					<Route path="/*" element={
+						<NotFoundPage
+							darkTheme={darkTheme}
+							hamburgerMenu={hamburgerMenu}
+						/>}
+					/>
 				</Routes>
 			</main>
 			{/* footer */}
