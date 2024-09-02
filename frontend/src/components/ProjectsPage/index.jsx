@@ -1,5 +1,5 @@
 import Gallery from '../Gallery'
 
 export default function ProjectsPage() {
-    return <Gallery/>
+    return <main className='py-12'><Gallery/></main>
 }

@@ -15,6 +15,7 @@ import reactIcon from '../../assets/react.png'
 import tailwindIcon from '../../assets/tailwind.png'
 import bootstrapIcon from '../../assets/bootstrap.png'
 import flaskIcon from '../../assets/flask.png'
+import typescriptIcon from '../../assets/typescript.png'
 
 export default function Card(props) {
     const badgeArr = [
@@ -33,6 +34,7 @@ export default function Card(props) {
         {badgeName: "Tailwind", icon: tailwindIcon},
         {badgeName: "Bootstrap", icon: bootstrapIcon},
         {badgeName: "Flask", icon: flaskIcon},
+        {badgeName: 'TypeScript', icon: typescriptIcon}
     ]
     let webImage = ''
     webImage = props.screenshot === '#' ? placeholder : props.screenshot

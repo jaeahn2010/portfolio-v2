@@ -127,15 +127,16 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     }
 
     return (
-        <div className={`${!darkTheme ? 'text-stone-800' : 'text-stone-300'} flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4`}>
+        <section className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4 py-24`}>
             <h1 className='text-3xl font-bold my-5 underline'>Reviews</h1>
-            <p className="text-xl my-5">Overall rating</p>
-            <p className="text-lg">{ratingsAverage.toFixed(2)} / 5</p>
+            <p className="text-xl my-5">Overall rating: <span>{ratingsAverage.toFixed(2)} / 5</span></p>
             <div className="flex flex-col justify-center items-center mt-48">
                 <button onClick={toggleCreateForm} className={btnStyle}>{btnText}</button>
-                {reviewForm}
-                {reviewElements}
+                <div className={`${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-t-2`}>
+                    {reviewForm}
+                    {reviewElements}
+                </div>
             </div>
-        </div>
+        </section>
     )
 }

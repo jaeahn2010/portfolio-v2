@@ -6,6 +6,7 @@ import RER from '../../assets/rer-ss.png'
 import aimAlign from '../../assets/aimalign-ss.png'
 import iydvAutoscheduler from '../../assets/iydv-autoscheduler-ss.png'
 import wordLock from '../../assets/wordlock-ss.png'
+import eriii from '../../assets/eriii-ss.png'
 
 export default function Gallery() {
     const projects = [
@@ -67,7 +68,7 @@ export default function Gallery() {
             screenshot: aimAlign,
             description: "Having trouble organizing and achieving your goals? This user-friendly website is just right for you. Make an account, and simply set a goal with some checkpoints, and AimAlign will automatically remind you and keep track of your progress.",
             repoLink: "https://github.com/jaeahn2010/aim-align",
-            appLink: "#",
+            appLink: "",
         },
         {
             projectId: "JYAB0007",
@@ -89,6 +90,16 @@ export default function Gallery() {
             repoLink: "https://github.com/jaeahn2010/wordlock",
             appLink: "#",
         },
+        {
+            projectId: 'JYAB0009',
+            projectName: 'ERIII: A business website',
+            startDate: 'August 2024',
+            badges: ['HTML', 'CSS', 'TypeScript', 'Node.js', 'React', 'Tailwind'],
+            screenshot: eriii,
+            description: "Check out the business website of the multitalented, versatile up-and-coming opera singer & model, Eugene Richards III!",
+            repoLink: 'https://github.com/jaeahn2010/eriii',
+            appLink: 'http://benevolent-jelly-6f983d.netlify.app',
+        }
     ]
     return (
         <div className="w-5/6 mx-auto grid sm:grid-cols-2 lg:grid-cols-3">

@@ -29,17 +29,19 @@ export default function AuthFormPage() {
 
     let actionText
     formType === 'login' ? actionText = 'Log In' : actionText = 'Sign Up'
+    let labelStyle = 'block text-stone-800 font-bold mb-2'
+    let inputStyle = 'w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600'
 
     let signupFields
     if (formType !== 'login') {
         signupFields = 
         <>
             <div>
-                <label className="block text-stone-800 font-bold mb-2" htmlFor="firstName">
+                <label className={labelStyle} htmlFor="firstName">
                     First Name
                 </label>
                 <input
-                    className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                    className={inputStyle}
                     id="firstName"
                     name="firstName"
                     required
@@ -49,11 +51,11 @@ export default function AuthFormPage() {
                 />
             </div>
             <div>
-                <label className="block text-stone-800 font-bold mb-2" htmlFor="lastName">
+                <label className={labelStyle} htmlFor="lastName">
                     Last Name
                 </label>
                 <input
-                    className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                    className={inputStyle}
                     id="lastName"
                     name="lastName"
                     required
@@ -66,17 +68,17 @@ export default function AuthFormPage() {
     }
 
     return (
-        <div className="flex items-center justify-center h-[90vh] mx-auto md:w-[600px]">
-            <div className="bg-gradient-to-b from-sky-500 via-sky-300 to-sky-500 rounded-lg shadow-xl p-8 w-full max-w-md">
+        <main className="flex items-center justify-center mx-auto py-24 md:w-[600px]">
+            <section className="bg-gradient-to-b from-sky-500 via-sky-300 to-sky-500 rounded-lg shadow-xl p-8 w-11/12 max-w-md">
                 <h2 className="text-3xl text-center text-stone-800 font-bold mb-8">{actionText}</h2>
                 <form className="space-y-6" onSubmit={handleSubmit}>
                     {signupFields}
                     <div>
-                        <label className="block text-stone-800 font-bold mb-2" htmlFor="email">
+                        <label className={labelStyle} htmlFor="email">
                             Email
                         </label>
                         <input
-                            className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                            className={inputStyle}
                             id="email"
                             name="email"
                             type="email"
@@ -87,11 +89,11 @@ export default function AuthFormPage() {
                         />
                     </div>
                     <div>
-                        <label className="block text-stone-800 font-bold mb-2" htmlFor="password">
+                        <label className={labelStyle} htmlFor="password">
                             Password
                         </label>
                         <input
-                            className="w-full p-2 text-stone-800 rounded-md focus:outline-none focus:ring focus:border-blue-600"
+                            className={inputStyle}
                             id="password"
                             name="password"
                             type="password"
@@ -110,7 +112,7 @@ export default function AuthFormPage() {
                         </button>
                     </div>
                 </form>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }

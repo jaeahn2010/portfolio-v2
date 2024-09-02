@@ -117,7 +117,7 @@ export default function AboutPage({darkTheme}) {
     for (let i = 51; i <= 135; i += 7) {
         xChoices.push(i)
     }
-    const btnStyle = 'border-stone-200 border-2 rounded-xl px-1 my-2 w-full hover:bg-gradient-to-r hover:from-stone-500 hover:via-stone-700 hover:to-stone-500'
+    const btnStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-2 rounded-xl px-1 my-2 w-full hover:bg-gradient-to-r hover:from-stone-600 hover:via-stone-400 hover:to-stone-600 hover:text-stone-200`
 
     let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
 
@@ -267,7 +267,7 @@ export default function AboutPage({darkTheme}) {
                     </div>
                 </div>
                 <div className='columns-3 p-2'>{technicalSkills.map(skill => 
-                    <p key={skill[0]} className={`${!techCategory || techCategory === skill[1] ? '' : 'text-stone-700'} duration-500`}>{skill[0].split('/')[4].split('-')[0].replace(/%2B/g, '+').replace(/_/g, ' ')}</p>
+                    <p key={skill[0]} className={`${!techCategory || techCategory === skill[1] ? '' : !darkTheme ? 'text-stone-300' : 'text-stone-700'} duration-500`}>{skill[0].split('/')[4].split('-')[0].replace(/%2B/g, '+').replace(/_/g, ' ')}</p>
                 )}</div>
 
             </div>
@@ -275,7 +275,7 @@ export default function AboutPage({darkTheme}) {
             <div className='min-h-[25vh]'>
 				<div
 					ref={timelineRef}
-					className='scrollbar-hide overflow-x-scroll flex w-full max-w-5xl my-5 p-4 space-x-4 snap-x snap-mandatory border-stone-200 border-y-2 bg-gradient-to-r from-stone-400 via-stone-600 to-stone-400'
+					className='scrollbar-hide overflow-x-scroll flex w-full max-w-5xl my-5 p-4 space-x-4 snap-x snap-mandatory border-stone-200 border-y-2 bg-gradient-to-r from-stone-600 via-stone-400 to-stone-600'
 				>
 					{experienceDates.map((date, index) => {
 						return date
@@ -297,48 +297,48 @@ export default function AboutPage({darkTheme}) {
                     <>
                         <div key={experience.date} className={`${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-y-4 h-[30vh] flex justify-center items-center`}>
                         <svg width="375" height="200" viewBox="0 0 375 200" xmlns="http://www.w3.org/2000/svg">
+                            {/* cactus 1 far */}
+                            <polygon points='145,110 150,110 150,95 160,95 160,75 155,75 155,90 150,90 150,60 145,60 145,90 140,90 140,70 135,70 135,95 145,95' fill='#cccccc' transform={svgFarObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
+                            {/* cactus 2 far */}
+                            <polygon points='175,110 180,110 180,93 185,93 185,63 179,63 179,88 176,88 176,74 170,74 170,93 175,93' fill='#cccccc' transform={svgFarObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
+                            {/* rocks 1 far */}
+                            <polygon points='164,99 173,101 180,112 163,112' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
+                            <polygon points='161,112 169,112 165,105 162,105' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
+                            {/* rocks 2 far */}
+                            <polygon points='360,99 369,101 376,112 359,112' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
+                            <polygon points='357,112 365,112 361,105 358,105' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
                             {/* running figure */}
                             {/* head */}
-                            <rect x='50' y='105' width='20' height='20' fill='#cccccc' rx='10' ry='10'/>
+                            <rect x='50' y='105' width='20' height='20' fill='#cccccc' rx='10' ry='10' stroke='#000000'/>
                             {/* eyes */}
                             <rect x='63' y='110' width='3' height='3' fill='#000000'/>
                             <rect x='58' y='110' width='3' height='3' fill='#000000'/>
                             {/* neck */}
-                            <rect x='57' y='125' width='6' height='3' fill='#cccccc'/>
+                            <rect x='57' y='125' width='6' height='3' fill='#cccccc' stroke='#000000'/>
                             {/* torso */}
-                            <rect x='48' y='128' width='24' height='33' fill='#cccccc' rx='6' ry='8'/>
+                            <rect x='48' y='128' width='24' height='33' fill='#cccccc' rx='6' ry='8' stroke='#000000'/>
                             {/* right arm */}
-                            <polygon points='48,137 38,137 38,154 43,154 43,145 48,145' fill='#cccccc' transform={svgRightArm}/>
+                            <polygon points='48,137 38,137 38,154 43,154 43,145 48,145' fill='#cccccc' transform={svgRightArm} stroke='#000000'/>
                             {/* left arm */}
-                            <polygon points='72,140 72,148 82,148 82,131 77,131 77,140' fill='#cccccc' transform={svgLeftArm}/>
+                            <polygon points='72,140 72,148 82,148 82,131 77,131 77,140' fill='#cccccc' transform={svgLeftArm} stroke='#000000'/>
                             {/* left leg */}
-                            <polygon points='51,160 57,160 57,174 43,174 43,168 51,168' fill='#cccccc' transform={svgLeftLeg}/>
+                            <polygon points='51,160 57,160 57,174 43,174 43,168 51,168' fill='#cccccc' transform={svgLeftLeg} stroke='#000000'/>
                             {/* right leg */}
-                            <polygon points='60,160 68,160 76,170 68,180 60,180 68,170' fill='#cccccc' transform={svgRightLeg}/>
+                            <polygon points='60,160 68,160 76,170 68,180 60,180 68,170' fill='#cccccc' transform={svgRightLeg} stroke='#000000'/>
                             {/* mountains far */}
-                            <polyline points='0,60 60,0 120,60' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='100,40 140,0 200,60' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='180,40 220,0 280,60' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='260,40 300,0 360,60' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='340,40 380,0' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
-                            {/* cactus 1 far */}
-                            <polygon points='145,110 150,110 150,95 160,95 160,75 155,75 155,90 150,90 150,60 145,60 145,90 140,90 140,70 135,70 135,95 145,95' fill='#cccccc' transform={svgFarObjects}/>
-                            {/* cactus 2 far */}
-                            <polygon points='175,110 180,110 180,93 185,93 185,63 179,63 179,88 176,88 176,74 170,74 170,93 175,93' fill='#cccccc' transform={svgFarObjects}/>
-                            {/* rocks 1 far */}
-                            <polygon points='164,99 173,101 180,112 163,112' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
-                            <polygon points='161,112 169,112 165,105 162,105' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
-                            {/* rocks 2 far */}
-                            <polygon points='360,99 369,101 376,112 359,112' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
-                            <polygon points='357,112 365,112 361,105 358,105' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
+                            <polyline points='0,60 60,0 120,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                            <polyline points='100,40 140,0 200,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                            <polyline points='180,40 220,0 280,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                            <polyline points='260,40 300,0 360,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                            <polyline points='340,40 380,0' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
                             {/* cactus near */}
-                            <polygon points='245,180 255,180 255,160 270,160 270,120 260,120 260,150 255,150 255,110 245,110 245,150 240,150 240,130 230,130 230,160 245,160' fill='#cccccc' transform={svgNearObjects}/>
+                            <polygon points='245,180 255,180 255,160 270,160 270,120 260,120 260,150 255,150 255,110 245,110 245,150 240,150 240,130 230,130 230,160 245,160' fill='#cccccc' transform={svgNearObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
                             {/* rocks near */}
-                            <polygon points='315,180 320,180 317,170 316,170' fill='#cccccc' stroke='#000000' transform={svgNearObjects}/>
-                            <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke='#000000' transform={svgNearObjects}/>
+                            <polygon points='315,180 320,180 317,170 316,170' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
+                            <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
                         </svg>
                         </div>
-                        <div key={experience.event} className='text-justify m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-500 via-stone-700 to-stone-500'>
+                        <div key={experience.event} className={`text-stone-200 text-justify m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-700 via-stone-400 to-stone-700`}>
                             <p>{experience.event}</p>
                         </div>
                     </>
