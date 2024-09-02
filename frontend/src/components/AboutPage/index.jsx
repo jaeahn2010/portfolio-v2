@@ -10,8 +10,13 @@ export default function AboutPage({darkTheme}) {
     const [techCategory, setTechCategory] = useState('')
     const [coordinates, setCoordinates] = useState([51, 126])
     const [currentExperienceDate, setCurrentExperienceDate] = useState('Aug 2003')
-    const [svgArms, setSvgArms] = useState('')
-    const [svgLegs, setSvgLegs] = useState('')
+    const [svgLeftArm, setSvgLeftArm] = useState('')
+    const [svgLeftLeg, setSvgLeftLeg] = useState('')
+    const [svgRightArm, setSvgRightArm] = useState('')
+    const [svgRightLeg, setSvgRightLeg] = useState('')
+    const [svgFarObjects, setSvgFarObjects] = useState('')
+    const [svgNearObjects, setSvgNearObjects] = useState('')
+    const [objectMovementIndex, setObjectMovementIndex] = useState(0)
 	const timelineRef = useRef(null)	
     const stats = [
         {
@@ -160,6 +165,28 @@ export default function AboutPage({darkTheme}) {
         setTechSrc(technicalSkills[techIndex][0])
     }, [techIndex])
 
+    useEffect(() => {
+        for (let i = 0; i < 6; i++) {
+            setTimeout(() => {
+                setObjectMovementIndex(prevIndex => {
+                    setSvgFarObjects(`translate(${-6 * (prevIndex + 1)}, 0)`)
+                    setSvgNearObjects(`translate(${-3 * (prevIndex + 1)}, 0)`)
+                    return prevIndex + 1
+                })
+                if (i % 2 === 0) {
+                    setSvgRightArm('rotate(-45 43 145)')
+                    setSvgLeftArm('rotate(45 77 140)')
+                    setSvgRightLeg('translate(-10, 0)')
+                    setSvgLeftLeg('translate(10, 0)')
+                } else {
+                    setSvgRightArm('')
+                    setSvgLeftArm('')
+                    setSvgRightLeg('')
+                    setSvgLeftLeg('')
+                }
+            }, i * 200)
+        }
+    }, [currentExperienceDate])
 
     return (
         <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} w-screen py-5`}>
@@ -268,7 +295,7 @@ export default function AboutPage({darkTheme}) {
                 <div>
                     {experiences.filter(experience => experience.date === currentExperienceDate).map(experience => 
                     <>
-                        <div className={`${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-y-4 h-[30vh] flex justify-center items-center`}>
+                        <div key={experience.date} className={`${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-y-4 h-[30vh] flex justify-center items-center`}>
                         <svg width="375" height="200" viewBox="0 0 375 200" xmlns="http://www.w3.org/2000/svg">
                             {/* running figure */}
                             {/* head */}
@@ -281,13 +308,13 @@ export default function AboutPage({darkTheme}) {
                             {/* torso */}
                             <rect x='48' y='128' width='24' height='33' fill='#cccccc' rx='6' ry='8'/>
                             {/* right arm */}
-                            <polygon points='48,137 38,137 38,154 43,154 43,145 48,145' fill='#cccccc'/>
+                            <polygon points='48,137 38,137 38,154 43,154 43,145 48,145' fill='#cccccc' transform={svgRightArm}/>
                             {/* left arm */}
-                            <polygon points='72,140 72,148 82,148 82,131 77,131 77,140' fill='#cccccc'/>
+                            <polygon points='72,140 72,148 82,148 82,131 77,131 77,140' fill='#cccccc' transform={svgLeftArm}/>
                             {/* left leg */}
-                            <polygon points='51,160 57,160 57,174 43,174 43,168 51,168' fill='#cccccc'/>
+                            <polygon points='51,160 57,160 57,174 43,174 43,168 51,168' fill='#cccccc' transform={svgLeftLeg}/>
                             {/* right leg */}
-                            <polygon points='60,160 68,160 76,170 68,180 60,180 68,170' fill='#cccccc'/>
+                            <polygon points='60,160 68,160 76,170 68,180 60,180 68,170' fill='#cccccc' transform={svgRightLeg}/>
                             {/* mountains far */}
                             <polyline points='0,60 60,0 120,60' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
                             <polyline points='100,40 140,0 200,60' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
@@ -295,23 +322,23 @@ export default function AboutPage({darkTheme}) {
                             <polyline points='260,40 300,0 360,60' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
                             <polyline points='340,40 380,0' fill='none' stroke='#ffffff' strokeLinecap='round' strokeWidth='2'/>
                             {/* cactus 1 far */}
-                            <polygon points='145,110 150,110 150,95 160,95 160,75 155,75 155,90 150,90 150,60 145,60 145,90 140,90 140,70 135,70 135,95 145,95' fill='#cccccc'/>
+                            <polygon points='145,110 150,110 150,95 160,95 160,75 155,75 155,90 150,90 150,60 145,60 145,90 140,90 140,70 135,70 135,95 145,95' fill='#cccccc' transform={svgFarObjects}/>
                             {/* cactus 2 far */}
-                            <polygon points='175,110 180,110 180,93 185,93 185,63 179,63 179,88 176,88 176,74 170,74 170,93 175,93' fill='#cccccc'/>
+                            <polygon points='175,110 180,110 180,93 185,93 185,63 179,63 179,88 176,88 176,74 170,74 170,93 175,93' fill='#cccccc' transform={svgFarObjects}/>
                             {/* rocks 1 far */}
-                            <polygon points='164,99 173,101 180,112 163,112' fill='#cccccc' stroke='#000000'/>
-                            <polygon points='161,112 169,112 165,105 162,105' fill='#cccccc' stroke='#000000'/>
+                            <polygon points='164,99 173,101 180,112 163,112' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
+                            <polygon points='161,112 169,112 165,105 162,105' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
                             {/* rocks 2 far */}
-                            <polygon points='360,99 369,101 376,112 359,112' fill='#cccccc' stroke='#000000'/>
-                            <polygon points='357,112 365,112 361,105 358,105' fill='#cccccc' stroke='#000000'/>
+                            <polygon points='360,99 369,101 376,112 359,112' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
+                            <polygon points='357,112 365,112 361,105 358,105' fill='#cccccc' stroke='#000000' transform={svgFarObjects}/>
                             {/* cactus near */}
-                            <polygon points='245,180 255,180 255,160 270,160 270,120 260,120 260,150 255,150 255,110 245,110 245,150 240,150 240,130 230,130 230,160 245,160' fill='#cccccc'/>
+                            <polygon points='245,180 255,180 255,160 270,160 270,120 260,120 260,150 255,150 255,110 245,110 245,150 240,150 240,130 230,130 230,160 245,160' fill='#cccccc' transform={svgNearObjects}/>
                             {/* rocks near */}
-                            <polygon points='315,180 320,180 317,170 316,170' fill='#cccccc' stroke='#000000'/>
-                            <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke='#000000'/>
+                            <polygon points='315,180 320,180 317,170 316,170' fill='#cccccc' stroke='#000000' transform={svgNearObjects}/>
+                            <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke='#000000' transform={svgNearObjects}/>
                         </svg>
                         </div>
-                        <div className='text-justify m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-500 via-stone-700 to-stone-500'>
+                        <div key={experience.event} className='text-justify m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-500 via-stone-700 to-stone-500'>
                             <p>{experience.event}</p>
                         </div>
                     </>
