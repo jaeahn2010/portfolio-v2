@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { signUp, logIn } from "../../../utils/backend";
 
-export default function AuthFormPage() {
+export default function AuthFormPage({hamburgerMenu}) {
     const { formType } = useParams()
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
@@ -68,7 +68,7 @@ export default function AuthFormPage() {
     }
 
     return (
-        <main className="flex items-center justify-center mx-auto py-24 md:w-[600px]">
+        <main className={`flex items-center justify-center mx-auto py-24 md:w-[600px] duration-500 ${hamburgerMenu ? 'opacity-50' : ''}`}>
             <section className="bg-gradient-to-b from-sky-500 via-sky-300 to-sky-500 rounded-lg shadow-xl p-8 w-11/12 max-w-md">
                 <h2 className="text-3xl text-center text-stone-800 font-bold mb-8">{actionText}</h2>
                 <form className="space-y-6" onSubmit={handleSubmit}>

@@ -3,7 +3,7 @@ import CountUp from "react-countup"
 import { useState, useRef, useEffect } from 'react'
 import './styles.css'
 
-export default function AboutPage({darkTheme}) {
+export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
     const [techIndex, setTechIndex] = useState(0)
     const [techSrc, setTechSrc] = useState('')
     const [techDisplay, setTechDisplay] = useState('</>')
@@ -86,7 +86,7 @@ export default function AboutPage({darkTheme}) {
             event: "Built and designed a business website for an opera singer"
         },
     ]
-    const experienceDates = ['', '', '', ''].concat(experiences.map(experience => experience.date)).concat(['', '', '', ''])
+    const experienceDates = ['', '', '', '', ''].concat(experiences.map(experience => experience.date)).concat(['', '', '', '', ''])
 
     const technicalSkills = [
         ['https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white', 'host'],
@@ -117,9 +117,8 @@ export default function AboutPage({darkTheme}) {
     for (let i = 51; i <= 135; i += 7) {
         xChoices.push(i)
     }
-    const btnStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-2 rounded-xl px-1 my-2 w-full hover:bg-gradient-to-r hover:from-stone-600 hover:via-stone-400 hover:to-stone-600 hover:text-stone-200`
-
-    let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
+    const btnStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-2 rounded-xl px-1 mx-2 my-2 w-full hover:bg-gradient-to-r hover:from-sky-500 hover:via-sky-200 hover:to-sky-500 lg:text-lg`
+    let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl lg:text-4xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
 
     document.addEventListener("scroll", () => {
         const allElems = document.getElementsByTagName('*')
@@ -189,19 +188,19 @@ export default function AboutPage({darkTheme}) {
     }, [currentExperienceDate])
 
     return (
-        <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} w-screen py-5`}>
+        <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} ${hamburgerMenu ? 'opacity-50' : ''} w-screen py-5 duration-500`}>
             <div className="text-center my-5 py-5 flex flex-col justify-center items-center">
                 <div>
-                    <p className='text-2xl'>Jae Ahn-Benton</p>
-                    <div className={`about-title ${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-t-2`}></div>
+                    <p className='text-2xl lg:text-4xl'>Jae Ahn-Benton</p>
+                    <div className={`about-title ${!darkTheme ? 'border-stone-900 light' : 'border-stone-200 dark'} border-t-2`}></div>
                 </div>
                 <div>
-                    <p className='text-lg'>Software Engineer (Full-Stack)</p>
-                    <p className={`about-title shadow-xl shadow-stone-600 ${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-t-2`}></p>
+                    <p className='text-lg lg:text-2xl'>Software Engineer (Full-Stack)</p>
+                    <p className={`about-title shadow-xl shadow-stone-600 ${!darkTheme ? 'border-stone-900 light' : 'border-stone-200 dark'} border-t-2`}></p>
                 </div>
             </div>
             <div className="slide-left flex justify-center items-center m-5">
-                <p className="md:text-lg max-w-[300px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
+                <p className="md:text-lg lg:text-2xl max-w-[300px]">I am a highly disciplined, solutions-driven developer who seeks for maximum efficiency in function and creative design in everything I do.</p>
                 <img className="ml-3 max-w-[200px] md:max-w-[300px] shadow-2xl rounded-xl"src={self}/>
             </div>
             <h3 className={sectionTitleStyle}>BACKGROUND</h3>
@@ -210,21 +209,21 @@ export default function AboutPage({darkTheme}) {
                     {stats.map(stat => 
                         <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center hover:bg-gradient-to-r from-stone-400 via-stone-200 to-stone-400">
                             <CountUp
-                                className="text-3xl"
+                                className="text-3xl lg:text-4xl"
                                 start={0}
                                 end={stat.endNum}
                                 duration={5}
                             />
-                            <p className="text-[12px]">{stat.tagline}</p>
-                            <p className="text-[12px]">{stat.year}</p>
+                            <p className="text-[12px] lg:text-lg">{stat.tagline}</p>
+                            <p className="text-[12px] lg:text-lg">{stat.year}</p>
                         </div>
                     )}
                 </div>
-                <p className="max-w-[300px] md:text-lg">My 16 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
+                <p className="max-w-[300px] md:text-lg lg:text-2xl">My 16 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
             </div>
             <h3 className={sectionTitleStyle}>CONTACT ME</h3>
             <div className="slide-left flex justify-center items-center m-5">
-                <p className="max-w-[300px] md:text-lg">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
+                <p className="max-w-[300px] md:text-lg lg:text-2xl">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
                 <div className="w-[300px] flex justify-center">
                     <a href="mailto:jaeahn2010@gmail.com">
                         <div className={`${!darkTheme ? 'bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500' : 'bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 text-stone-800'} flex flex-col justify-center items-center rounded-full w-[100px] h-[100px] shadow-2xl hover:cursor-pointer hover:animate-spin`}>
@@ -254,40 +253,41 @@ export default function AboutPage({darkTheme}) {
                     </svg>
                     <button className='text-3xl hover:scale-125 duration-500' id='right-arrow' onClick={handleIndex}>&#xbb;</button>
                 </div>
-                <div className='flex w-11/12 items-center text-sm'>
-                    <div className='flex flex-col justify-center items-center w-1/2 mx-2'>
+                <div className='flex w-11/12 lg:w-1/2 items-center text-sm'>
+                    <div className='flex flex-col justify-center items-center w-1/2 lg:w-1/3 mx-auto'>
                         <button id='lang' onClick={handleTechCategory} className={btnStyle}>Languages</button>
                         <button id='frame' onClick={handleTechCategory} className={btnStyle}>Libraries/Frameworks</button>
                         <button id='host' onClick={handleTechCategory} className={btnStyle}>Cloud Platforms/Hosting</button>
                     </div>
-                    <div className='flex flex-col justify-center items-center w-1/2 mx-2'>
+                    <div className='flex flex-col justify-center items-center w-1/2 lg:w-1/3 mx-auto'>
                         <button id='db' onClick={handleTechCategory} className={btnStyle}>Databases</button>
                         <button id='version' onClick={handleTechCategory} className={btnStyle}>Version Control</button>
                         <button id='markup' onClick={handleTechCategory} className={btnStyle}>Markup</button>
                     </div>
                 </div>
-                <div className='columns-3 p-2'>{technicalSkills.map(skill => 
-                    <p key={skill[0]} className={`${!techCategory || techCategory === skill[1] ? '' : !darkTheme ? 'text-stone-300' : 'text-stone-700'} duration-500`}>{skill[0].split('/')[4].split('-')[0].replace(/%2B/g, '+').replace(/_/g, ' ')}</p>
-                )}</div>
-
+                <section className='w-1/2 flex justify-center items-center'>
+                    <p className='text-9xl mr-12'>&#91;</p>
+                    <div className='columns-3 p-2 text-center'>{technicalSkills.map(skill => 
+                        <p key={skill[0]} className={`${!techCategory || techCategory === skill[1] ? '' : !darkTheme ? 'text-stone-300' : 'text-stone-700'} duration-500 lg:text-xl`}>{skill[0].split('/')[4].split('-')[0].replace(/%2B/g, '+').replace(/_/g, ' ')}</p>
+                    )}</div>
+                    <p className='text-9xl ml-12'>&#93;</p>
+                </section>
             </div>
             <h3 className={sectionTitleStyle}>EXPERIENCE</h3>
-            <div className='min-h-[25vh]'>
+            <div className='min-h-[25vh] w-11/12 lg:w-1/2 mx-auto'>
 				<div
 					ref={timelineRef}
-					className='scrollbar-hide overflow-x-scroll flex w-full max-w-5xl my-5 p-4 space-x-4 snap-x snap-mandatory border-stone-200 border-y-2 bg-gradient-to-r from-stone-600 via-stone-400 to-stone-600'
+					className={`scrollbar-hide overflow-x-scroll flex w-full mx-auto my-5 p-4 space-x-4 snap-x snap-mandatory ${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-y-2 font-courier`}
 				>
 					{experienceDates.map((date, index) => {
 						return date
 						? <button
 							key={date}
 							onClick={() => {
-								// isMobile ? handleScrollToYear(index) : handleScrollToYear(index - 2)
-								// setCurrentYear(year)
-                                handleScrollToYear(index)
+								isMobile ? handleScrollToYear(index) : handleScrollToYear(index - 3)
                                 setCurrentExperienceDate(date)
 							}}
-							className={`flex-none w-24 hover:scale-150 duration-500 flex items-center justify-center text-lg md:text-3xl font-bold snap-center ${date === currentExperienceDate ? 'text-stone-100' : 'text-stone-350'}`}
+							className={`flex-none w-24 hover:scale-110 duration-500 flex items-center justify-center font-bold snap-center lg:text-xl ${!darkTheme ? 'text-stone-800' : 'text-stone-200'} ${experienceDates.indexOf(currentExperienceDate) - index === 0 ? '' : Math.abs(experienceDates.indexOf(currentExperienceDate) - index) === 1 ? 'opacity-50' : Math.abs(experienceDates.indexOf(currentExperienceDate) - index) === 2 ? 'opacity-25' : 'opacity-10'}`}
 						>{date}</button>
 						: <div key={index} className="flex-none w-24"></div>
 					})}
@@ -295,50 +295,50 @@ export default function AboutPage({darkTheme}) {
                 <div>
                     {experiences.filter(experience => experience.date === currentExperienceDate).map(experience => 
                     <>
-                        <div key={experience.date} className={`${!darkTheme ? 'border-stone-900' : 'border-stone-200'} border-y-4 h-[30vh] flex justify-center items-center`}>
-                        <svg width="375" height="200" viewBox="0 0 375 200" xmlns="http://www.w3.org/2000/svg">
-                            {/* cactus 1 far */}
-                            <polygon points='145,110 150,110 150,95 160,95 160,75 155,75 155,90 150,90 150,60 145,60 145,90 140,90 140,70 135,70 135,95 145,95' fill='#cccccc' transform={svgFarObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
-                            {/* cactus 2 far */}
-                            <polygon points='175,110 180,110 180,93 185,93 185,63 179,63 179,88 176,88 176,74 170,74 170,93 175,93' fill='#cccccc' transform={svgFarObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
-                            {/* rocks 1 far */}
-                            <polygon points='164,99 173,101 180,112 163,112' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
-                            <polygon points='161,112 169,112 165,105 162,105' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
-                            {/* rocks 2 far */}
-                            <polygon points='360,99 369,101 376,112 359,112' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
-                            <polygon points='357,112 365,112 361,105 358,105' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
-                            {/* running figure */}
-                            {/* head */}
-                            <rect x='50' y='105' width='20' height='20' fill='#cccccc' rx='10' ry='10' stroke='#000000'/>
-                            {/* eyes */}
-                            <rect x='63' y='110' width='3' height='3' fill='#000000'/>
-                            <rect x='58' y='110' width='3' height='3' fill='#000000'/>
-                            {/* neck */}
-                            <rect x='57' y='125' width='6' height='3' fill='#cccccc' stroke='#000000'/>
-                            {/* torso */}
-                            <rect x='48' y='128' width='24' height='33' fill='#cccccc' rx='6' ry='8' stroke='#000000'/>
-                            {/* right arm */}
-                            <polygon points='48,137 38,137 38,154 43,154 43,145 48,145' fill='#cccccc' transform={svgRightArm} stroke='#000000'/>
-                            {/* left arm */}
-                            <polygon points='72,140 72,148 82,148 82,131 77,131 77,140' fill='#cccccc' transform={svgLeftArm} stroke='#000000'/>
-                            {/* left leg */}
-                            <polygon points='51,160 57,160 57,174 43,174 43,168 51,168' fill='#cccccc' transform={svgLeftLeg} stroke='#000000'/>
-                            {/* right leg */}
-                            <polygon points='60,160 68,160 76,170 68,180 60,180 68,170' fill='#cccccc' transform={svgRightLeg} stroke='#000000'/>
-                            {/* mountains far */}
-                            <polyline points='0,60 60,0 120,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='100,40 140,0 200,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='180,40 220,0 280,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='260,40 300,0 360,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
-                            <polyline points='340,40 380,0' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
-                            {/* cactus near */}
-                            <polygon points='245,180 255,180 255,160 270,160 270,120 260,120 260,150 255,150 255,110 245,110 245,150 240,150 240,130 230,130 230,160 245,160' fill='#cccccc' transform={svgNearObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
-                            {/* rocks near */}
-                            <polygon points='315,180 320,180 317,170 316,170' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
-                            <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
-                        </svg>
+                        <div key={experience.date} className={`${!darkTheme ? 'border-stone-900' : 'border-stone-200'} h-[30vh] flex justify-center items-center mx-auto lg:w-2/3`}>
+                            <svg className={`${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-2 rounded-lg`}  width="375" height="200" viewBox="0 0 375 200" xmlns="http://www.w3.org/2000/svg">
+                                {/* cactus 1 far */}
+                                <polygon points='145,110 150,110 150,95 160,95 160,75 155,75 155,90 150,90 150,60 145,60 145,90 140,90 140,70 135,70 135,95 145,95' fill='#cccccc' transform={svgFarObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
+                                {/* cactus 2 far */}
+                                <polygon points='175,110 180,110 180,93 185,93 185,63 179,63 179,88 176,88 176,74 170,74 170,93 175,93' fill='#cccccc' transform={svgFarObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
+                                {/* rocks 1 far */}
+                                <polygon points='164,99 173,101 180,112 163,112' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
+                                <polygon points='161,112 169,112 165,105 162,105' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
+                                {/* rocks 2 far */}
+                                <polygon points='360,99 369,101 376,112 359,112' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
+                                <polygon points='357,112 365,112 361,105 358,105' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgFarObjects}/>
+                                {/* running figure */}
+                                {/* head */}
+                                <rect x='50' y='105' width='20' height='20' fill='#cccccc' rx='10' ry='10' stroke='#000000'/>
+                                {/* eyes */}
+                                <rect x='63' y='110' width='3' height='3' fill='#000000'/>
+                                <rect x='58' y='110' width='3' height='3' fill='#000000'/>
+                                {/* neck */}
+                                <rect x='57' y='125' width='6' height='3' fill='#cccccc' stroke='#000000'/>
+                                {/* torso */}
+                                <rect x='48' y='128' width='24' height='33' fill='#cccccc' rx='6' ry='8' stroke='#000000'/>
+                                {/* right arm */}
+                                <polygon points='48,137 38,137 38,154 43,154 43,145 48,145' fill='#cccccc' transform={svgRightArm} stroke='#000000'/>
+                                {/* left arm */}
+                                <polygon points='72,140 72,148 82,148 82,131 77,131 77,140' fill='#cccccc' transform={svgLeftArm} stroke='#000000'/>
+                                {/* left leg */}
+                                <polygon points='51,160 57,160 57,174 43,174 43,168 51,168' fill='#cccccc' transform={svgLeftLeg} stroke='#000000'/>
+                                {/* right leg */}
+                                <polygon points='60,160 68,160 76,170 68,180 60,180 68,170' fill='#cccccc' transform={svgRightLeg} stroke='#000000'/>
+                                {/* mountains far */}
+                                <polyline points='0,60 60,0 120,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                                <polyline points='100,40 140,0 200,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                                <polyline points='180,40 220,0 280,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                                <polyline points='260,40 300,0 360,60' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                                <polyline points='340,40 380,0' fill='none' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} strokeLinecap='round' strokeWidth='2'/>
+                                {/* cactus near */}
+                                <polygon points='245,180 255,180 255,160 270,160 270,120 260,120 260,150 255,150 255,110 245,110 245,150 240,150 240,130 230,130 230,160 245,160' fill='#cccccc' transform={svgNearObjects} stroke={`${!darkTheme ? '#000000' : '#ffffff'}`}/>
+                                {/* rocks near */}
+                                <polygon points='315,180 320,180 317,170 316,170' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
+                                <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
+                            </svg>
                         </div>
-                        <div key={experience.event} className={`text-stone-200 m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-700 via-stone-400 to-stone-700`}>
+                        <div key={experience.event} className={`text-stone-800 m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-sky-500 via-sky-200 to-sky-500 mx-auto min-h-[15vh] flex items-center`}>
                             <p className='font-courier font-bold'>{experience.event}</p>
                         </div>
                     </>

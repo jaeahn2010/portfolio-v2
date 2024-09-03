@@ -11,7 +11,7 @@ export default function HomePage({darkTheme, hamburgerMenu}) {
     let languageSwitchStyle = 'h-[30px] hover:animate-spin hover:cursor-pointer'
 
     return (
-        <section className={`flex flex-col justify-center items-center mx-auto ${hamburgerMenu ? 'opacity-5' : ''}`}>
+        <section className={`flex flex-col justify-center items-center mx-auto duration-500 ${hamburgerMenu ? 'opacity-50' : ''}`}>
             <div className="welcome-image mt-16 mb-6 flex justify-center">
                 <img className="w-3/4 max-w-[600px] rounded-3xl" src={homepageImage}/>
             </div>
@@ -34,7 +34,7 @@ export default function HomePage({darkTheme, hamburgerMenu}) {
                 &#41;{languageSwitch === 'javascript' ? ';' : ''}</p>
                 {languageSwitch === 'javascript' ? <p className="font-mono">&#125;</p> : <p className='pb-4'></p>}
             </div>
-            <div className='flex justify-around w-1/2 my-5'>
+            <div className='flex justify-around w-1/2 mt-5 mb-10'>
                 <img className={languageSwitchStyle} src={javascriptIcon} onClick={() => setLanguageSwitch('javascript')}/>
                 <img className={languageSwitchStyle} src={pythonIcon} onClick={() => setLanguageSwitch('python')}/>
             </div>

@@ -1,7 +1,14 @@
 .about-title {
     animation: draw-underline 0.5s ease-out 2s forwards, fade-out 0.5s ease-out 2.5s forwards;
-    border-color: rgb(41, 41, 39);
     width: 0;
+}
+
+.about-title.light {
+    border-color: rgb(41, 41, 39);
+}
+
+.about-title.dark {
+    border-color: rgb(231, 229, 228);
 }
 
 .skill {

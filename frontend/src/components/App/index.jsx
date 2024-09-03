@@ -20,10 +20,11 @@ export default function App() {
 	const [currentUserId, setCurrentUserId] = useState('')
 	const [hamburgerMenu, setHamburgerMenu] = useState(false)
 	const [darkTheme, setDarkTheme] = useState(false)
+	const [isMobile, setIsMobile] = useState(false)
 	const navigate = useNavigate()
 
-	let h1Style = 'p-2 my-3 hover:scale-110 duration-500 hover:underline'
-	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-auto rounded-xl shadow-xl hover:scale-110 duration-500 w-1/2 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 text-stone-800'
+	let h1Style = `p-2 my-3 hover:scale-110 duration-500 hover:underline`
+	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-auto rounded-xl shadow-xl hover:scale-110 duration-500 w-1/2 lg:w-1/2 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 text-stone-800'
 	let hamburgerStyle = 'border-black border-2 mx-4 max-w-[30px] rounded-xl duration-500 ease-in-out'
 	let bounceImgStyle = 'w-[40px] hover:animate-bounce'
 	let authLink = 
@@ -46,6 +47,17 @@ export default function App() {
 	useEffect(() => {
 		if (loginStatus) getUserData()
 	}, [loginStatus])
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth <= 768)
+		}
+		handleResize()
+		window.addEventListener("resize", handleResize)
+		return () => {
+			window.removeEventListener("resize", handleResize)
+		}
+	}, [])
 
 	if (loginStatus) {
 		authLink = 
@@ -84,7 +96,7 @@ export default function App() {
 					</div>
 				</div>
 				{/* nav bar */}
-				<nav className={`${!darkTheme ? 'bg-gradient-to-b from-stone-500 via-stone-300 to-stone-500' : 'bg-gradient-to-b from-stone-900 via-stone-600 to-stone-900 text-stone-200'} ${hamburgerMenu ? 'opacity-100 z-20' : 'hidden'} text-center text-xl ease-in-out absolute left-0 top-0 w-full h-[100vh] pt-16`}>
+				<nav className={`${!darkTheme ? 'bg-gradient-to-b from-stone-500 via-stone-300 to-stone-500' : 'bg-gradient-to-b from-stone-900 via-stone-600 to-stone-900 text-stone-200'} ${hamburgerMenu ? 'opacity-100 z-20' : 'hidden'} text-center text-xl ease-in-out absolute left-0 top-0 w-full h-full lg:w-1/6 pt-16`}>
 					<Link to="/" onClick={() => setHamburgerMenu(false)}>
 						<h1 className={h1Style}>Home</h1>
 					</Link>
@@ -105,44 +117,51 @@ export default function App() {
 						<HomePage 
 							darkTheme={darkTheme}
 							hamburgerMenu={hamburgerMenu}
+							isMobile={isMobile}
 						/>}
 					/>
 					<Route path="/about" element={
 						<AboutPage
 							darkTheme={darkTheme}
 							hamburgerMenu={hamburgerMenu}
+							isMobile={isMobile}
 						/>}
 					/>
 					<Route path="/projects" element={
 						<ProjectsPage
 							darkTheme={darkTheme}
 							hamburgerMenu={hamburgerMenu}
+							isMobile={isMobile}
 						/>}
 					/>
 					<Route path="/reviews" element={
 						<ReviewsPage
-							darkTheme={darkTheme} hamburgerMenu={hamburgerMenu}
+							darkTheme={darkTheme}
+							hamburgerMenu={hamburgerMenu}
 							loginStatus={loginStatus}
 							currentUsername={currentUsername}
 							currentUserId={currentUserId}
+							isMobile={isMobile}
 						/>}
 					/>
 					<Route path="/auth/:formType" element={
 						<AuthFormPage
 							darkTheme={darkTheme}
 							hamburgerMenu={hamburgerMenu}
+							isMobile={isMobile}
 						/>}
 					/>
 					<Route path="/*" element={
 						<NotFoundPage
 							darkTheme={darkTheme}
 							hamburgerMenu={hamburgerMenu}
+							isMobile={isMobile}
 						/>}
 					/>
 				</Routes>
 			</main>
 			{/* footer */}
-			<footer className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-400'} sticky left-0 bottom-0 w-full py-2 bg-stone-300 border-t-2 border-stone-800`}>
+			<footer className={`${!darkTheme ? 'bg-stone-200' : 'bg-stone-400'} ${hamburgerMenu ? 'opacity-50' : ''} left-0 bottom-0 w-full py-2 bg-stone-300 border-t-2 border-stone-800`}>
 				<div className="flex justify-around items-center py-2">
 					<a href="https://github.com/jaeahn2010/jaeahn2010" target="_blank" rel="noopener noreferrer">
 						<img className={bounceImgStyle} src={gitHub}/>

@@ -4,7 +4,7 @@ import Review from "../Review"
 import star from "../../assets/star.svg"
 import starFill from '../../assets/star-fill.svg'
 
-export default function reviewsPage({ loginStatus, currentUsername, currentUserId, darkTheme }) {
+export default function reviewsPage({ loginStatus, currentUsername, currentUserId, darkTheme, hamburgerMenu }) {
     const [reviews, setReviews] = useState([])
     const [starClicked, setStarClicked] = useState(false)
     const [showCreateForm, setShowCreateForm] = useState(false)
@@ -127,7 +127,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     }
 
     return (
-        <section className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4 py-24`}>
+        <section className={`duration-500 ${hamburgerMenu ? 'opacity-50' : ''} ${!darkTheme ? 'text-stone-800' : 'text-stone-200'} flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4 py-24`}>
             <h1 className='text-3xl font-bold my-5 underline'>Reviews</h1>
             <p className="text-xl my-5">Overall rating: <span>{ratingsAverage.toFixed(2)} / 5</span></p>
             <div className="flex flex-col justify-center items-center mt-48">
