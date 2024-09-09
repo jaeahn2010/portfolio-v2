@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react'
 import './styles.css'
 
 export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
+    const [contactMeAnimate, setContactMeAnimate] = useState(false)
+    const [emailClickable, setEmailClickable] = useState(false)
     const [techIndex, setTechIndex] = useState(0)
     const [techSrc, setTechSrc] = useState('')
     const [techDisplay, setTechDisplay] = useState('</>')
@@ -117,7 +119,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
     for (let i = 51; i <= 135; i += 7) {
         xChoices.push(i)
     }
-    const btnStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-2 rounded-xl px-1 mx-2 my-2 w-full hover:bg-gradient-to-r hover:from-sky-500 hover:via-sky-200 hover:to-sky-500 lg:text-lg`
+    const btnStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} border-2 rounded-xl px-1 mx-2 my-2 w-full bg-gradient-to-r from-stone-300 via-stone-100 to-stone-300 hover:bg-gradient-to-r hover:from-amber-300 hover:via-amber-100 hover:to-amber-300 text-stone-800 lg:text-lg`
     let sectionTitleStyle = `${!darkTheme ? 'border-stone-800' : 'border-stone-200'} section-title m-5 text-3xl lg:text-4xl text-center w-5/6 border-stone-200 border-y-2 my-12 py-5 mx-auto`
 
     document.addEventListener("scroll", () => {
@@ -151,6 +153,18 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
 
     function handleTechCategory(evt) {
         setTechCategory(evt.target.id)
+    }
+
+    function handleContactMeClick(evt) {
+        if (!emailClickable) {
+            evt.preventDefault()
+            setContactMeAnimate(true)
+            setTimeout(() => {
+                setContactMeAnimate(false)
+                setEmailClickable(true)
+                evt.target.click()
+            }, 2000)
+        }
     }
 
     useEffect(() => {
@@ -205,9 +219,9 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
             </div>
             <h3 className={sectionTitleStyle}>BACKGROUND</h3>
             <div className="slide-right flex justify-center items-center m-5">
-                <div className={`${!darkTheme ? 'bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500' : 'bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 text-stone-800'} flex flex-col justify-center mr-10  rounded-xl shadow-2xl max-w-[300px]`}>
+                <div className={`${!darkTheme ? 'bg-gradient-to-b from-stone-100 via-stone-300 to-stone-500' : 'bg-gradient-to-b from-stone-500 via-stone-300 to-stone-500 text-stone-800'} flex flex-col justify-center mr-10  rounded-xl shadow-2xl max-w-[300px]`}>
                     {stats.map(stat => 
-                        <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center hover:bg-gradient-to-r from-stone-400 via-stone-200 to-stone-400">
+                        <div key={stat.id} className="border-black border-2 rounded-xl m-3 p-2 text-center hover:bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300">
                             <CountUp
                                 className="text-3xl lg:text-4xl"
                                 start={0}
@@ -225,8 +239,8 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
             <div className="slide-left flex justify-center items-center m-5">
                 <p className="max-w-[300px] md:text-lg lg:text-2xl">While I am currently focused on finding a full-time job as a software engineer, I am still more than happy to do freelance work! If you need a website or an app for yourself or for your business, please don't hesitate to contact me. I offer competitive pricing and will work overtime to meet your deadline. Click on the button to the right to send me a request.</p>
                 <div className="w-[300px] flex justify-center">
-                    <a href="mailto:jaeahn2010@gmail.com">
-                        <div className={`${!darkTheme ? 'bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500' : 'bg-gradient-to-b from-sky-300 via-sky-500 to-sky-700 text-stone-800'} flex flex-col justify-center items-center rounded-full w-[100px] h-[100px] shadow-2xl hover:cursor-pointer hover:animate-spin`}>
+                    <a href="mailto:jaeahn2010@gmail.com" onClick={handleContactMeClick}>
+                        <div className={`${!darkTheme ? 'bg-gradient-to-b from-stone-100 via-stone-300 to-stone-100 border-stone-500 border-2' : 'bg-gradient-to-b from-stone-300 via-stone-500 to-stone-300 text-stone-800'} ${contactMeAnimate ? 'contact-animate' : ''} flex flex-col justify-center items-center rounded-full w-[100px] h-[100px] shadow-2xl hover:cursor-pointer`}>
                             <p className="text-3xl">@</p>
                             <p>Contact Me</p>
                         </div>
@@ -338,7 +352,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
                                 <polygon points='285,180 315,180 308,160 290,163' fill='#cccccc' stroke={`${!darkTheme ? '#000000' : '#ffffff'}`} transform={svgNearObjects}/>
                             </svg>
                         </div>
-                        <div key={experience.event} className={`text-stone-800 m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-sky-500 via-sky-200 to-sky-500 mx-auto min-h-[15vh] flex items-center`}>
+                        <div key={experience.event} className={`text-stone-800 m-5 p-3 border-stone-200 border-2 rounded-3xl bg-gradient-to-r from-stone-400 via-stone-100 to-stone-400 hover:from-amber-300 hover:via-amber-100 hover:to-amber-300 mx-auto min-h-[15vh] flex items-center duration-1000`}>
                             <p className='font-courier font-bold'>{experience.event}</p>
                         </div>
                     </>

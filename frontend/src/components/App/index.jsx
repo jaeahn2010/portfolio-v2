@@ -24,7 +24,7 @@ export default function App() {
 	const navigate = useNavigate()
 
 	let h1Style = `p-2 my-3 hover:scale-110 duration-500 hover:underline`
-	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-auto rounded-xl shadow-xl hover:scale-110 duration-500 w-1/2 lg:w-1/2 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 text-stone-800'
+	let authStyle = 'border-stone-800 border-2 text-center my-5 mx-auto rounded-xl shadow-xl hover:scale-110 duration-500 w-1/2 lg:w-1/2 bg-gradient-to-r from-stone-300 via-stone-100 to-stone-300 text-stone-800'
 	let hamburgerStyle = 'border-black border-2 mx-4 max-w-[30px] rounded-xl duration-500 ease-in-out'
 	let bounceImgStyle = 'w-[40px] hover:animate-bounce'
 	let authLink = 

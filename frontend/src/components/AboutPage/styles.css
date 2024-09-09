@@ -59,6 +59,14 @@
     perspective: 750px;
 }
 
+.contact-animate {
+    animation:
+        shrink 0.25s ease-in-out forwards,
+        jump-right 0.5s linear 0.25s forwards,
+        jump-left-down 0.5s linear 0.75s forwards,
+        expand-fade 0.5s ease-in 1.25s forwards;
+}
+
 @keyframes spread-x {
     from {margin: 0;}
     to {margin: 0 30px;}
@@ -102,4 +110,34 @@
 @keyframes fade-out {
     from {border-color: rgb(41, 41, 39)}
     to {border-color: rgb(229, 229, 224)}
+}
+
+@keyframes shrink {
+    from {transform: scale(1) translate(0, 0);}
+    to {transform: scale(0.5) translate(-5rem, 0);}
+}
+
+@keyframes jump-right {
+    0% {transform: scale(0.5) translate(-5rem, 0);}
+    17% {transform: scale(0.5) translate(-3rem, -5rem);}
+    34% {transform: scale(0.5) translate(-1rem, -8rem);}
+    50% {transform: scale(0.5) translate(1rem, -9rem);}
+    67% {transform: scale(0.5) translate(3rem, -8rem);}
+    84% {transform: scale(0.5) translate(5rem, -5rem);}
+    100% {transform: scale(0.5) translate(7rem, 0);}
+}
+
+@keyframes jump-left-down {
+    0% {transform: scale(0.5) translate(7rem, 0);}
+    17% {transform: scale(0.5) translate(5rem, -3rem);}
+    34% {transform: scale(0.5) translate(3rem, -4rem);}
+    50% {transform: scale(0.5) translate(1rem, -3rem);}
+    67% {transform: scale(0.5) translate(-1rem, 0);}
+    84% {transform: scale(0.5) translate(-3rem, 5rem);}
+    100% {transform: scale(0.5) translate(-5rem, 12rem);}
+}
+
+@keyframes expand-fade {
+    from {transform: scale(0.5) translate(0, 0); opacity: 1;}
+    to {transform: scale(40) translate(0, 0); opacity: 0;}
 }

@@ -13,7 +13,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
         comment: ''
     })
 
-    let btnStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-sky-300 via-sky-100 to-sky-300 p-2 text-stone-800'
+    let btnStyle = 'border-stone-800 border-2 text-center my-5 mx-4 rounded-xl shadow-xl hover:scale-110 duration-500 bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300 p-2 text-stone-800'
 
     useEffect(() => {
         getReviews().then(reviews => setReviews(reviews))
@@ -127,7 +127,7 @@ export default function reviewsPage({ loginStatus, currentUsername, currentUserI
     }
 
     return (
-        <section className={`duration-500 ${hamburgerMenu ? 'opacity-50' : ''} ${!darkTheme ? 'text-stone-800' : 'text-stone-200'} flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4 py-24`}>
+        <section className={`duration-500 w-11/12 mx-auto  ${hamburgerMenu ? 'opacity-50' : ''} ${!darkTheme ? 'text-stone-800' : 'text-stone-200'} flex flex-col items-center p-4 pb-10 min-h-[100vh] mt-4 py-24`}>
             <h1 className='text-3xl font-bold my-5 underline'>Reviews</h1>
             <p className="text-xl my-5">Overall rating: <span>{ratingsAverage.toFixed(2)} / 5</span></p>
             <div className="flex flex-col justify-center items-center mt-48">

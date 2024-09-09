@@ -40,7 +40,7 @@ export default function Card(props) {
     webImage = props.screenshot === '#' ? placeholder : props.screenshot
 
     return (
-        <div className="flex flex-col bg-gradient-to-b from-sky-100 via-sky-300 to-sky-500 rounded-xl m-3 px-5 py-6">
+        <div className="flex flex-col bg-gradient-to-b from-stone-100 via-stone-300 to-stone-500 rounded-xl m-3 px-5 py-6">
             <figure className="flex flex-col items-center basis-3/4">
                 <div className="mb-5">
                     <a href={props.appLink} target="_blank" rel="noopener noreferrer">
@@ -55,7 +55,7 @@ export default function Card(props) {
                     <p className="text-justify">{props.description}</p>
                 </figcaption>
             </figure>
-            <div className="p-3 grid grid-rows-2 grid-flow-col gap-3 bg-sky-200 rounded-3xl max-w-[300px] mx-auto mt-5">
+            <div className="p-3 grid grid-rows-2 grid-flow-col gap-3 bg-stone-200 rounded-3xl max-w-[300px] mx-auto mt-5">
                 {props.badges.map(badge => 
                     <div key={badge} className="flex flex-col items-center justify-center w-[40px] mx-auto">
                         <img className="w-[30px] h-[30px]" src={badgeArr.find(eachBadge => eachBadge.badgeName === badge).icon}/>
