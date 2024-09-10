@@ -98,7 +98,7 @@ export default function Gallery() {
             screenshot: eriii,
             description: "Check out the business website of the multitalented, versatile up-and-coming opera singer & model, Eugene Richards III!",
             repoLink: 'https://github.com/jaeahn2010/eriii',
-            appLink: 'http://benevolent-jelly-6f983d.netlify.app',
+            appLink: 'https://eugenerichardsiii.com',
         }
     ]
     return (

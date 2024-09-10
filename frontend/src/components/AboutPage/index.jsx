@@ -98,6 +98,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         ['https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/Express.js-404D59?style=for-the-badge', 'frame'],
         ['https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white', 'frame'],
+        ['https://img.shields.io/badge/Git-E44C30?style=for-the-badge&logo=git&logoColor=white', 'version'],
         ['https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white', 'version'],
         ['https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white', 'host'],
         ['https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white', 'markup'],
