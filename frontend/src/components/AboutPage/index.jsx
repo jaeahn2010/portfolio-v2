@@ -206,11 +206,11 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         <main className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} ${hamburgerMenu ? 'opacity-50' : ''} w-screen py-5 duration-500`}>
             <div className="text-center my-5 py-5 flex flex-col justify-center items-center">
                 <div>
-                    <p className='text-2xl lg:text-4xl'>Jae Ahn-Benton</p>
+                    <h1 className='text-2xl lg:text-4xl'>Jae Ahn-Benton</h1>
                     <div className={`about-title ${!darkTheme ? 'border-stone-900 light' : 'border-stone-200 dark'} border-t-2`}></div>
                 </div>
                 <div>
-                    <p className='text-lg lg:text-2xl'>Software Engineer (Full-Stack)</p>
+                    <h2 className='text-lg lg:text-2xl'>Software Engineer (Full-Stack)</h2>
                     <p className={`about-title shadow-xl shadow-stone-600 ${!darkTheme ? 'border-stone-900 light' : 'border-stone-200 dark'} border-t-2`}></p>
                 </div>
             </div>

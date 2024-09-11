@@ -16,9 +16,9 @@ export default function HomePage({darkTheme, hamburgerMenu}) {
                 <img className="w-3/4 max-w-[600px] rounded-3xl" src={homepageImage}/>
             </div>
             <div>
-                <p className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} welcome-message font-mono text-[12px] md:text-[18px] lg:text-[24px]`}>Welcome to Jae Ahn-Benton's website.</p>
+                <h1 className={`${!darkTheme ? 'text-stone-800' : 'text-stone-200'} welcome-message font-mono text-[12px] md:text-[18px] lg:text-[24px]`}>Welcome to Jae Ahn-Benton's website.</h1>
             </div>
-            <div className={`${!darkTheme ? 'border-stone-800' : 'border-stone-200'} code-greeting w-3/4 max-w-[600px] bg-gradient-to-r from-stone-800 via-stone-500 to-stone-800 text-stone-200 rounded-3xl mx-12 pl-12 mt-5 mb-2 text-[14px] md:text-[18px] lg:text-[24px]`}>
+            <div className={`${!darkTheme ? 'border-stone-800' : 'border-stone-200'} code-greeting w-3/4 max-w-[600px] bg-gradient-to-r from-stone-800 via-stone-500 to-stone-800 text-stone-200 rounded-3xl mx-12 pl-12 py-2 mt-5 mb-2 text-[14px] md:text-[18px] lg:text-[24px]`}>
                 <p className="font-mono">{languageSwitch === 'javascript' ? 'if (interested) {' : 'if interested:'}</p>
                 <p className="font-mono pl-10">{languageSwitch === 'javascript' ? 'readMore' : 'read_more'}&#40;
                     <Link to="/about" className="font-mono text-yellow-400 hover:underline">{languageSwitch === 'javascript' ? 'aboutMe' : 'about_me'}</Link>
