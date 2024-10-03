@@ -31,7 +31,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         {
             id: 2,
             stat: "music",
-            endNum: 930,
+            endNum: 936,
             tagline: "music clients served",
             year: "since 2008"
         },
