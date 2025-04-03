@@ -106,7 +106,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         ['https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white', 'host'],
         ['https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white', 'lang'],
-        ['https://img.shields.io/badge/C%23-green?style=for-the-badge&logo=amazon-aws&logoColor=white', 'lang'],
+        ['https://img.shields.io/badge/C%23-green?style=for-the-badge&logo=c%23&logoColor=white', 'lang'],
         ['https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white', 'markup'],
         ['https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/Express.js-404D59?style=for-the-badge', 'frame'],
@@ -126,8 +126,8 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         ['https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB', 'frame'],
         ['https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white', 'lang'],
-        ['https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=amazon-aws&logoColor=white', 'frame'],
-        ['https://img.shields.io/badge/WordPress-blue?style=for-the-badge&logo=amazon-aws&logoColor=white', 'frame'],        
+        ['https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=unity&logoColor=white', 'frame'],
+        ['https://img.shields.io/badge/WordPress-blue?style=for-the-badge&logo=wordpress&logoColor=white', 'frame'],        
     ]
 
     const xChoices = []
