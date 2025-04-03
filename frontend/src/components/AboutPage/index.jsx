@@ -24,14 +24,14 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         {
             id: 1,
             stat: "experience",
-            endNum: 16,
+            endNum: 17,
             tagline: "years of professional experience",
             year: null
         },
         {
             id: 2,
             stat: "music",
-            endNum: 936,
+            endNum: 1002,
             tagline: "music clients served",
             year: "since 2008"
         },
@@ -45,7 +45,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         {
             id: 4,
             stat: "software projects",
-            endNum: 9,
+            endNum: 10,
             tagline: "software projects",
             year: "since 2023"
         },
@@ -87,6 +87,18 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
             date: 'Aug 2024',
             event: "Built and designed a business website for an opera singer"
         },
+        {
+            date: 'Dec 2024',
+            event: "Used WordPress to build, design, and manage a music festival website for a local music school in Las Vegas, NV"
+        },
+        {
+            date: 'Jan 2024',
+            event: "Started to learn C# and Unity"
+        },
+        {
+            date: 'Feb 2025',
+            event: "Built and designed a business website, as well as manage a large database for a team of local independent contractor musicians"
+        },
     ]
     const experienceDates = ['', '', '', '', ''].concat(experiences.map(experience => experience.date)).concat(['', '', '', '', ''])
 
@@ -94,6 +106,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         ['https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white', 'host'],
         ['https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white', 'lang'],
+        ['https://img.shields.io/badge/C%23-green?style=for-the-badge&logo=amazon-aws&logoColor=white', 'lang'],
         ['https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white', 'markup'],
         ['https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/Express.js-404D59?style=for-the-badge', 'frame'],
@@ -113,6 +126,8 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         ['https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB', 'frame'],
         ['https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white', 'lang'],
+        ['https://img.shields.io/badge/Unity-gray?style=for-the-badge&logo=amazon-aws&logoColor=white', 'frame'],
+        ['https://img.shields.io/badge/WordPress-blue?style=for-the-badge&logo=amazon-aws&logoColor=white', 'frame'],        
     ]
 
     const xChoices = []
@@ -169,7 +184,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
     }
 
     useEffect(() => {
-        let techName = technicalSkills[techIndex][0].split('/')[4].split('-')[0].replace(/%2B/g, '+').replace(/_/g, ' ')
+        let techName = technicalSkills[techIndex][0].split('/')[4].split('-')[0].replace(/%23/g, '#').replace(/%2B/g, '+').replace(/_/g, ' ')
         for (let i = 0; i < techName.length; i++) {
             setTimeout(() => {
                 setTechDisplay(techName.slice(0, i + 1))
@@ -283,7 +298,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
                 <section className='w-1/2 flex justify-center items-center'>
                     <p className='text-9xl mr-12'>&#91;</p>
                     <div className='columns-3 p-2 text-center'>{technicalSkills.map(skill => 
-                        <p key={skill[0]} className={`${!techCategory || techCategory === skill[1] ? '' : !darkTheme ? 'text-stone-300' : 'text-stone-700'} duration-500 lg:text-xl`}>{skill[0].split('/')[4].split('-')[0].replace(/%2B/g, '+').replace(/_/g, ' ')}</p>
+                        <p key={skill[0]} className={`${!techCategory || techCategory === skill[1] ? '' : !darkTheme ? 'text-stone-300' : 'text-stone-700'} duration-500 lg:text-xl`}>{skill[0].split('/')[4].split('-')[0].replace(/%23/g, '#').replace(/%2B/g, '+').replace(/_/g, ' ')}</p>
                     )}</div>
                     <p className='text-9xl ml-12'>&#93;</p>
                 </section>

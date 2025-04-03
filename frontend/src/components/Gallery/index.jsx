@@ -7,6 +7,8 @@ import aimAlign from '../../assets/aimalign-ss.png'
 import iydvAutoscheduler from '../../assets/iydv-autoscheduler-ss.png'
 import wordLock from '../../assets/wordlock-ss.png'
 import eriii from '../../assets/eriii-ss.png'
+import lvChamberFest from '../../assets/lvchamberfest-ss.png'
+import forteAndPiano from '../../assets/forteandpiano-ss.png'
 
 export default function Gallery() {
     const projects = [
@@ -21,7 +23,7 @@ export default function Gallery() {
             appLink: "#",
         },
         {
-            projectId: "JYAB0005",
+            projectId: "JYAB0002",
             projectName: "IYDV Auto-Scheduler",
             startDate: "July 2024",
             badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Tailwind"],
@@ -31,7 +33,7 @@ export default function Gallery() {
             appLink: "https://iydv-autoscheduler-25cd162a9a18.herokuapp.com",
         },
         {
-            projectId: 'JYAB0009',
+            projectId: 'JYAB0003',
             projectName: 'ERIII: A business website',
             startDate: 'August 2024',
             badges: ['HTML', 'CSS', 'TypeScript', 'Node.js', 'React', 'Tailwind'],
@@ -41,17 +43,27 @@ export default function Gallery() {
             appLink: 'https://eugenerichardsiii.com',
         },
         {
-            projectId: "JYAB0002",
-            projectName: "Greater Las Vegas Music Services",
-            startDate: "Coming Soon",
-            badges: ["HTML", "CSS", "JavaScript", "EJS", "Node.js", "Express.js", "MongoDB"],
-            screenshot: GLVMS,
-            description: "Need to hire a pianist for your event? Check out the Greater Las Vegas Music Services. On this website, you can customize your music setlist to perfectly match your event - weddings, corporate event, open house, private party, formal recitals, and more! And the exact cost of the music is disclosed to you up front. No hassle, no ambiguity!",
-            repoLink: "https://github.com/jaeahn2010/glv-music-services-v2",
-            appLink: "#",
+            projectId: 'JYAB0004',
+            projectName: 'LVChamberFest: A music festival website',
+            startDate: 'December 2024',
+            badges: ['WordPress', 'HTML', 'CSS', 'JavaScript'],
+            screenshot: lvChamberFest,
+            description: "In the ever-growing city of Las Vegas, classical music is also thriving. Check out the new and exciting educational opportunity for young aspiring musicians to collaborate with one another through chamber music!",
+            repoLink: '#',
+            appLink: 'https://lvchamberfest.org',
         },
         {
-            projectId: "JYAB0003",
+            projectId: 'JYAB0005',
+            projectName: 'Forte & Piano: A music business website',
+            startDate: 'February 2025',
+            badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Tailwind"],
+            screenshot: forteAndPiano,
+            description: "Need to hire a pianist for your event? Look no further than Forte & Piano. On this website, you can customize your music setlist to perfectly match your event - weddings, corporate event, open house, private party, formal recitals, and more! And the exact cost of the music is disclosed to you up front. No hassle, no ambiguity!",
+            repoLink: "https://github.com/jaeahn2010/glv-music-services-v2",
+            appLink: 'https://forteandpiano.org',
+        },
+        {
+            projectId: "JYAB0006",
             projectName: "HeyThere",
             startDate: "Under Construction",
             badges: ["Python", "HTML", "CSS", "Materialize", "PostgreSQL", "Django"],
@@ -61,7 +73,7 @@ export default function Gallery() {
             appLink: "https://heythere-hr-f3d27d8a0e61.herokuapp.com",
         },
         {
-            projectId: "JYAB0004",
+            projectId: "JYAB0007",
             projectName: "Real Estate Redirect",
             startDate: "Coming Soon",
             badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Tailwind"],
@@ -71,17 +83,17 @@ export default function Gallery() {
             appLink: "https://real-estate-redirect-b5a52228fa63.herokuapp.com",
         },
         {
-            projectId: "JYAB0006",
+            projectId: "JYAB0008",
             projectName: "AimAlign",
             startDate: "Coming Soon",
             badges: ["Python", "HTML", "CSS", "Materialize", "PostgreSQL", "Django"],
             screenshot: aimAlign,
             description: "Having trouble organizing and achieving your goals? This user-friendly website is just right for you. Make an account, and simply set a goal with some checkpoints, and AimAlign will automatically remind you and keep track of your progress.",
             repoLink: "https://github.com/jaeahn2010/aim-align",
-            appLink: "",
+            appLink: "#",
         },
         {
-            projectId: "JYAB0007",
+            projectId: "JYAB0009",
             projectName: "NannyNetLV",
             startDate: "Coming Soon",
             badges: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js", "MongoDB", "React", "Bootstrap"],
@@ -91,7 +103,7 @@ export default function Gallery() {
             appLink: "#",
         },
         {
-            projectId: "JYAB0008",
+            projectId: "JYAB0010",
             projectName: "WordLock",
             startDate: "Coming Soon",
             badges: ["HTML", "CSS", "JavaScript", "Python", "Flask"],
