@@ -106,7 +106,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
         ['https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white', 'host'],
         ['https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white', 'lang'],
-        ['https://img.shields.io/badge/C%23-green?style=for-the-badge&logo=c%23&logoColor=white', 'lang'],
+        ['https://img.shields.io/badge/C%23-green?style=for-the-badge&logo=cs&logoColor=white', 'lang'],
         ['https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white', 'markup'],
         ['https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white', 'frame'],
         ['https://img.shields.io/badge/Express.js-404D59?style=for-the-badge', 'frame'],
@@ -249,7 +249,7 @@ export default function AboutPage({darkTheme, hamburgerMenu, isMobile}) {
                         </div>
                     )}
                 </div>
-                <p className="max-w-[300px] md:text-lg lg:text-2xl">My 16 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
+                <p className="max-w-[300px] md:text-lg lg:text-2xl">My 17 years of being self-employed small business owner has allowed me to be flexible toward individual clients' needs and wants, always keeping their best interests at heart and going the extra mile without being asked to.</p>
             </div>
             <h3 className={sectionTitleStyle}>CONTACT ME</h3>
             <div className="slide-left flex justify-center items-center m-5">
